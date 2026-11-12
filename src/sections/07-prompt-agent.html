@@ -23,7 +23,7 @@
   </div>
 
   <div class="tabs">
-    <div class="tablist" role="tablist"><button>Portal steps</button><button>Code</button><button>Voice &amp; workflows</button><button>Endpoint &amp; versions</button><button>Best practices</button></div>
+    <div class="tablist" role="tablist"><button>Portal steps</button><button>Code</button><button>Voice, A2A &amp; routines</button><button>Endpoint &amp; versions</button><button>Best practices</button></div>
 
     <div class="tabpanel">
       <ol class="steps">
@@ -67,9 +67,9 @@ print(reply.output_text)</pre></div>
     <div class="tabpanel">
       <div class="grid g2">
         <div class="card"><h4>Voice-based prompt agents</h4><p>Real-time spoken experiences. Configure the model, instructions, audio settings, an optional greeting and tools; connect through <b>Voice Live</b>. Foundry manages lifecycle and voice orchestration. Telephony channels, image input in a turn, sub-agents and voice-specific optimization are documented.</p></div>
-        <div class="card"><h4>Workflows <span class="tag prev">Preview</span></h4><p>Orchestrate several agents and steps when one task spans more than one agent. If a single agent with tools can finish the job, keep it simple. Declarative workflows can also be used and migrated in VS Code.</p></div>
+        <div class="card"><h4>Workflows <span class="tag prev">Preview</span> <span class="tag prev">Retiring Dec 1, 2026</span></h4><p>The visual workflow builder orchestrates agents with branching, variables and human-in-the-loop steps. <b>Foundry is retiring workflows on December 1, 2026.</b> For new orchestration use Microsoft Agent Framework (code-based, in hosted agents), and follow the migration guide for existing workflows.</p></div>
         <div class="card"><h4>Agent-to-agent (A2A)</h4><p>Agents can delegate to other agents. A2A v1.0 is generally available; v0.3 is preview. You can enable incoming A2A on a Foundry agent so other agents can call it.</p></div>
-        <div class="card"><h4>Routines <span class="tag prev">Preview</span></h4><p>Trigger agent work from schedules and events rather than only from user messages.</p></div>
+        <div class="card"><h4>Routines <span class="tag ga">GA</span></h4><p>Run an agent automatically when a trigger fires: a one-time timer, a recurring schedule, or an event such as a GitHub issue opening or a message posted in a Teams channel. One trigger, one action: the action invokes a prompt or hosted agent, by default under the agent's identity. Run history links to the response and trace. For branching or multiple agents, orchestrate in code instead.</p></div>
       </div>
     </div>
 
@@ -95,7 +95,7 @@ print(reply.output_text)</pre></div>
       <ul class="tight">
         <li>Keep instructions short, concrete and verifiable. Put long reference content in a knowledge source, not in the prompt.</li>
         <li>Describe <b>when</b> to use each tool and what its parameters mean; vague tool descriptions are a common cause of wrong tool calls.</li>
-        <li>Prefer one agent with the right tools over a multi-agent workflow until you need orchestration.</li>
+        <li>Prefer one agent with the right tools over a multi-agent design until you need orchestration, and plan that orchestration in code rather than the retiring workflow builder.</li>
         <li>Build an evaluation dataset early so every change is measured, not anecdotal.</li>
         <li>Let the <b>agent optimizer</b> propose better instructions and tool descriptions against your dataset (next sections).</li>
       </ul>
@@ -108,7 +108,8 @@ print(reply.output_text)</pre></div>
     {{doc:agents/concepts/runtime-components|Agents, conversations, responses}}
     {{doc:agents/how-to/configure-agent|Configure an agent}}
     {{doc:agents/quickstarts/prompt-voice-agent|Voice agent quickstart}}
-    {{doc:agents/concepts/workflow|Workflows}}
+    {{doc:agents/concepts/workflow|Workflows (retiring Dec 1, 2026)}}
+    {{doc:agents/concepts/routines|Routines}}
     {{doc:agents/how-to/tools/agent-to-agent|A2A}}
     {{doc:agents/concepts/development-lifecycle|Agent development lifecycle}}
   </div>

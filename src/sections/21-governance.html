@@ -25,7 +25,7 @@
     <div class="tabpanel">
       <div class="grid g2">
         <div class="card"><h4>People</h4><p>Microsoft Entra ID and Azure RBAC with Foundry roles that separate control plane from data plane (User, Project Manager, Account Owner, Owner). Prefer <b>keyless</b> authentication. Elevated-role tasks and the option to disable preview features are documented for administrators.</p></div>
-        <div class="card"><h4>Agents</h4><p>Each agent gets a <b>Microsoft Entra agent identity</b> under an <b>agent identity blueprint</b>. It starts with <b>no permissions</b>; you grant least-privilege RBAC on the target services. Agents authenticate to tools without secrets in prompts or code.</p></div>
+        <div class="card"><h4>Agents</h4><p>Each agent gets a <b>Microsoft Entra agent identity</b> under an <b>agent identity blueprint</b>. It starts with <b>no permissions</b>; you grant least-privilege RBAC on the target services. Agents authenticate to tools without secrets in prompts or code. <b>Autopilots</b> additionally get an agent user account so they can act in Microsoft 365 as themselves.</p></div>
         <div class="card"><h4>Callers</h4><p><b>Agent endpoint authorization</b> controls who can call an agent (Azure RBAC, agent blueprint, Bot Service schemes). API keys are not supported for agent endpoints.</p></div>
         <div class="card"><h4>Users, delegated</h4><p><b>User delegation for tools</b> uses OAuth on-behalf-of and Microsoft Entra consent so tools act with the user's permissions, not a broad service identity.</p></div>
       </div>
@@ -77,13 +77,14 @@
         <li><b>Manage agents at scale</b> across supported platforms: filter, drill into evaluation and monitoring, act on recommendations.</li>
         <li><b>Register custom agents</b> from other platforms into the control plane registry (preview) and route them through the AI gateway.</li>
         <li><b>Agent availability for administrators:</b> use <b>Agent 365</b> and Microsoft Entra governance actions, with Azure infrastructure intervention as the emergency path.</li>
+        <li><b>Microsoft Agent 365</b> is Microsoft's enterprise control plane for agents, built on <b>Entra Agent ID</b>. Its five pillars are a <b>registry</b> (including agents built in Foundry and Copilot Studio, registered agents and shadow agents), <b>access control</b> (RBAC, ABAC and Conditional Access), <b>visualization</b>, <b>interoperability</b> (Microsoft 365 apps and Work IQ) and <b>security</b> (Defender and Purview). Entra Agent ID enables access reviews, lifecycle policies and owner attestation.</li>
         <li><b>Schedule red-team scans and drift monitoring</b> for ongoing agent testing.</li>
       </ul>
     </div>
 
     <div class="tabpanel">
       <ul class="tight">
-        <li><b>Transparency notes</b> for Azure OpenAI and for Foundry Agent Service; data, privacy and security pages for models and agents; a code of conduct; abuse monitoring; content provenance and text watermarking for supported models.</li>
+        <li><b>Transparency notes</b> for Azure OpenAI and for Foundry Agent Service; data, privacy and security pages for models and agents (see the data privacy section); a code of conduct; abuse monitoring; content provenance (C2PA and text watermarking for supported models).</li>
         <li><b>High availability and disaster recovery</b> guidance, including recovery from platform outage and from resource and data loss, and a Foundry security baseline.</li>
         <li><b>Model lifecycle:</b> track retirement dates so a governed fleet does not depend on a retired model.</li>
       </ul>

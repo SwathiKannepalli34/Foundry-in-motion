@@ -1,0 +1,195 @@
+<section class="sec" id="privacy" data-nav="Data privacy & abuse monitoring" data-group="Govern" data-c="cyan">
+  <div class="sec-head">
+    <span class="eyebrow">20 · What happens to my data?</span>
+    <h2>Data privacy and abuse monitoring in Foundry</h2>
+    <p class="lede">The first question every customer asks. The honest answer depends on <b>which model you use</b>: models sold by Azure are operated by Azure under Microsoft's data protection terms, while partner and community models are Non-Microsoft Products with the provider's own terms. Abuse monitoring follows the same split.</p>
+  </div>
+
+  <div class="callout"><div><b>1P and 3P in the docs.</b> People say "first-party (1P)" and "third-party (3P)" models. The documentation uses <b>Foundry Models sold by Azure</b> (includes all Azure OpenAI models plus selected models from other providers) and <b>Foundry Models from partners and community</b> (for example Anthropic's Claude). This guide uses 1P and 3P as shorthand for those two.</div></div>
+
+  <div class="diagram">
+    <svg viewBox="0 0 1000 425" role="img" aria-label="Data flow for models sold by Azure compared with Claude from Anthropic">
+      <rect class="box" x="10" y="170" width="120" height="70" rx="14"/><text x="70" y="202" text-anchor="middle" font-size="14" style="font-weight:700">Your app</text><text class="t-f" x="70" y="222" text-anchor="middle" font-size="11">prompts in, answers out</text>
+      <!-- lane 1 -->
+      <rect class="zone" x="160" y="8" width="830" height="196" rx="20"/><text x="180" y="30" font-size="12" class="t-m" letter-spacing="1.4">MODELS SOLD BY AZURE (1P) · OPERATED BY AZURE · MICROSOFT DPA</text>
+      <rect class="box hi" x="180" y="46" width="190" height="78" rx="12"/><text x="275" y="72" text-anchor="middle" font-size="14" style="font-weight:700">Azure-hosted model</text><text class="t-f" x="275" y="92" text-anchor="middle" font-size="11">stateless: nothing is stored</text><text class="t-f" x="275" y="108" text-anchor="middle" font-size="11">in the model</text>
+      <rect class="box" x="385" y="46" width="190" height="78" rx="12"/><text x="480" y="72" text-anchor="middle" font-size="14" style="font-weight:700">Guardrails</text><text class="t-f" x="480" y="92" text-anchor="middle" font-size="11">run in real time on prompts</text><text class="t-f" x="480" y="108" text-anchor="middle" font-size="11">and completions; nothing stored</text>
+      <rect class="box" x="590" y="46" width="190" height="78" rx="12"/><text x="685" y="72" text-anchor="middle" font-size="14" style="font-weight:700">Stored features</text><text class="t-f" x="685" y="92" text-anchor="middle" font-size="11">Responses, files, fine-tuning</text><text class="t-f" x="685" y="108" text-anchor="middle" font-size="11">AES-256 · CMK option · deletable</text>
+      <rect class="box" x="795" y="46" width="185" height="78" rx="12" style="stroke:var(--amber)"/><text x="887" y="72" text-anchor="middle" font-size="14" style="font-weight:700">Abuse monitoring</text><text class="t-f" x="887" y="92" text-anchor="middle" font-size="11">flagged content only</text><text class="t-f" x="887" y="108" text-anchor="middle" font-size="11">per-geography data store</text>
+      <circle class="pulse" cx="887" cy="140" r="6" fill="var(--amber)"/>
+      <rect class="box" x="180" y="146" width="800" height="44" rx="10"/><text x="580" y="166" text-anchor="middle" font-size="12.5">Where it is processed depends on the deployment type: Standard (your geography) · Data Zone · Global</text><text class="t-f" x="580" y="182" text-anchor="middle" font-size="11">Data at rest stays in the geography you designate, including the abuse monitoring store</text>
+      <!-- lane 2 -->
+      <rect class="zone" x="160" y="218" width="830" height="200" rx="20" style="stroke:var(--rose);fill:color-mix(in srgb,var(--rose) 6%,transparent)"/><text x="180" y="240" font-size="12" class="t-m" letter-spacing="1.4">PARTNER MODELS (3P) · EXAMPLE: CLAUDE · NON-MICROSOFT PRODUCT</text>
+      <rect class="box hi" x="180" y="256" width="250" height="72" rx="12"/><text x="305" y="282" text-anchor="middle" font-size="13.5" style="font-weight:700">Claude · Hosted on Azure</text><text class="t-f" x="305" y="301" text-anchor="middle" font-size="11">processed on Azure infrastructure</text><text class="t-f" x="305" y="316" text-anchor="middle" font-size="11">Global or Data Zone (US)</text>
+      <rect class="box" x="180" y="340" width="250" height="68" rx="12" style="stroke:var(--amber)"/><text x="305" y="364" text-anchor="middle" font-size="13.5" style="font-weight:700">Claude · Hosted on Anthropic</text><text class="t-f" x="305" y="383" text-anchor="middle" font-size="11">may be processed outside Azure</text><text class="t-f" x="305" y="398" text-anchor="middle" font-size="11">and outside your Azure geography</text>
+      <rect class="box" x="460" y="256" width="250" height="152" rx="12"/><text x="585" y="282" text-anchor="middle" font-size="14" style="font-weight:700">Anthropic</text><text class="t-m" x="585" y="306" text-anchor="middle" font-size="12">operator and independent</text><text class="t-m" x="585" y="323" text-anchor="middle" font-size="12">data processor</text><text class="t-m" x="585" y="347" text-anchor="middle" font-size="12">Anthropic DPA and</text><text class="t-m" x="585" y="364" text-anchor="middle" font-size="12">Commercial Terms apply</text><text class="t-m" x="585" y="388" text-anchor="middle" font-size="12">Anthropic safety systems</text>
+      <rect class="box" x="740" y="256" width="240" height="152" rx="12"/><text x="860" y="282" text-anchor="middle" font-size="14" style="font-weight:700">Microsoft's role</text><text class="t-m" x="860" y="306" text-anchor="middle" font-size="12">Foundry portal, Azure infra,</text><text class="t-m" x="860" y="323" text-anchor="middle" font-size="12">billing (CCU) and support</text><text class="t-m" x="860" y="347" text-anchor="middle" font-size="12">Shares billing, usage and</text><text class="t-m" x="860" y="364" text-anchor="middle" font-size="12">contact info with Anthropic</text><text class="t-m" x="860" y="388" text-anchor="middle" font-size="12">for Marketplace operations</text>
+      <!-- flows -->
+      <path class="flow" d="M130 190 C150 150 160 90 180 85"/><path class="flow b" d="M130 222 C150 262 160 290 180 292"/><path class="flow a" d="M130 232 C150 300 160 370 180 374"/>
+      <path class="flow v" d="M370 85 L385 85"/><path class="flow v" d="M575 85 L590 85"/><path class="flow a" d="M780 85 L795 85"/>
+      <path class="flow r" d="M430 292 L460 292"/><path class="flow r" d="M430 374 C445 374 445 340 460 332"/><path class="flow g" d="M740 332 L710 332"/>
+    </svg>
+    <p class="cap">The 1P lane runs entirely on Azure under the Microsoft DPA. In the 3P lane, the provider is the operator and processor, and where your data goes depends on the hosting option you choose.</p>
+  </div>
+
+  <div class="tabs">
+    <div class="tablist" role="tablist"><button>Your data (1P)</button><button>Where it lives</button><button>Agents &amp; tools</button><button>Third-party (3P) models</button><button>Abuse monitoring · 1P</button><button>Abuse monitoring · 3P</button><button>Customer checklist</button></div>
+
+    <div class="tabpanel">
+      <p>For <b>models sold by Azure</b>, your prompts (inputs), completions (outputs), embeddings and training data:</p>
+      <div class="grid g2">
+        <div class="card glow"><ul class="tight"><li><b>Are not</b> available to other customers.</li><li><b>Are not</b> available to OpenAI or other providers of models sold by Azure.</li><li><b>Are not</b> used by those providers to improve their models or services.</li></ul></div>
+        <div class="card glow"><ul class="tight"><li><b>Are not</b> used to train any generative AI foundation models without your permission or instruction.</li><li>Customer data, prompts and completions are <b>not</b> used to improve Microsoft or third-party products without your explicit permission.</li><li>Your <b>fine-tuned models</b> are available exclusively to you.</li></ul></div>
+      </div>
+      <ul class="tight" style="margin-top:12px">
+        <li>Microsoft hosts these models in its own Azure environment. They <b>do not interact</b> with services operated by the model providers, such as ChatGPT or the OpenAI API.</li>
+        <li>The models are <b>stateless</b>: no prompts or completions are stored in the model.</li>
+        <li>The <b>Microsoft Products and Services Data Protection Addendum (DPA)</b> governs the processing.</li>
+      </ul>
+      <h4 style="margin-top:14px">What Foundry processes to provide the service</h4>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Data</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td><b>Prompts and generated content</b></td><td>Submitted prompts and what the model returns: text, images, embeddings.</td></tr>
+          <tr><td><b>Uploaded data</b></td><td>Files for fine-tuning, assistants and batch, through the Files API or a vector store.</td></tr>
+          <tr><td><b>Data for stateful entities</b></td><td>Message history and content persisted by the Responses API, Threads (Assistants, preview) and stored completions (preview).</td></tr>
+          <tr><td><b>Augmented data</b></td><td>Content retrieved from a configured data store or a URL and added to the prompt to ground the answer.</td></tr>
+          <tr><td><b>Training and validation data</b></td><td>Prompt-completion pairs you supply for fine-tuning.</td></tr>
+        </tbody></table></div>
+    </div>
+
+    <div class="tabpanel">
+      <h4>Where data is processed</h4>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Deployment type</th><th>Prompts and responses are processed…</th></tr></thead>
+        <tbody>
+          <tr><td><b>Standard</b> (regional)</td><td>Within the geography you specify, and possibly between regions inside that geography for operational reasons such as performance and capacity.</td></tr>
+          <tr><td><b>Data Zone</b></td><td>Anywhere inside the Microsoft-defined data zone. A Data Zone deployment in a US resource can process anywhere in the US; in an EU member state resource, in that or any other EU member state.</td></tr>
+          <tr><td><b>Global</b></td><td>In any geography where the model is deployed.</td></tr>
+          <tr><td><b>Batch</b></td><td>A Global deployment type: data at rest stays in the designated geography until capacity is available, then processing may occur in any geography where the model is deployed.</td></tr>
+        </tbody></table></div>
+      <div class="callout good"><div><b>At rest is always your geography.</b> For Global and Data Zone deployments, only the <i>location of processing</i> changes. Stored data, such as uploaded files and the abuse monitoring data store, stays in the geography you designated, and Azure data processing and compliance commitments still apply.</div></div>
+      <h4>What is stored, and how it is protected</h4>
+      <ul class="tight">
+        <li>Stored data lives in the Foundry resource in <b>your Azure tenant</b>, in the same geography as the resource.</li>
+        <li><b>Encrypted at rest with AES-256 by default</b>, with an option for a <b>customer-managed key</b> (some preview features may not support it). Microsoft-managed keys always provide baseline encryption.</li>
+        <li>You can <b>delete</b> stored data at any time.</li>
+        <li>For direct Responses API calls, the service manages the storage; it does not support bring-your-own storage for that state. Content in Cosmos DB or Blob Storage is encrypted, and the customer-managed key is used when configured and applicable.</li>
+        <li>Fine-tuned models are encrypted at rest when not deployed, exclusive to you, and deletable. Safety evaluations of fine-tuned models log only the assessment (deployable or not).</li>
+        <li><b>Preview features</b> may follow different privacy practices, including for abuse monitoring, under the supplemental preview terms.</li>
+      </ul>
+    </div>
+
+    <div class="tabpanel">
+      <p>Foundry Agent Service adds tools and stored state, so there are more places data can go. The key points from the agent data privacy page:</p>
+      <div class="grid g2">
+        <div class="card"><h4>Your data</h4><ul class="tight"><li>Prompts, completions and your data are not available to other customers, and not available to or used to improve models from OpenAI, Meta, Cohere or Mistral.</li><li>Stored agent data lives at rest in the resource in your tenant and geography; it can be encrypted with a customer-managed key (preview features may not support it) and deleted by you.</li><li>With <b>standard agent setup</b> you bring your own Storage, AI Search and Cosmos DB so conversation state and files stay under your control.</li></ul></div>
+        <div class="card"><h4>Tools can change the rules</h4><ul class="tight"><li>Tools that call external services follow <b>those services' terms</b>. For example, Grounding with Bing Search has its own data collection and privacy terms and is a Microsoft-as-controller service, <b>excluded from the Microsoft DPA</b>.</li><li>Data you pass in MCP tool headers is available only for the current run and is not persisted.</li><li>Publishing to Microsoft 365 and Teams means those services process and store some data under their own terms and residency commitments.</li></ul></div>
+      </div>
+      <div class="callout warn"><div><b>Four things developers must handle.</b>
+        <ul class="tight">
+          <li><b>Response IDs are not bound to a user.</b> Another caller with access to the same project who obtains a <code>previous_response_id</code> can continue the response and pull its history into context. Keep IDs confidential and map them server-side to users or tenants.</li>
+          <li><b>Old versions stay callable.</b> Invocation permission is per agent, not per version. To withdraw an unsafe configuration, delete the affected versions, and rotate any credential that was exposed.</li>
+          <li><b>Projects do not isolate every file.</b> Batch and fine-tuning work at the parent resource scope. For independent file access, use separate Foundry resources.</li>
+          <li><b>Hub-based projects:</b> the built-in Reader role can expose stored agent content through the legacy endpoint; grant it carefully.</li>
+        </ul></div></div>
+    </div>
+
+    <div class="tabpanel">
+      <p>Models from partners and community that are not sold by Azure are <b>Non-Microsoft Products</b> under the Product Terms. Terms, price and data handling are set by the provider and presented at deployment.</p>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th></th><th>Models sold by Azure (1P)</th><th>Claude (3P), Hosted on Azure</th><th>Claude (3P), Hosted on Anthropic</th></tr></thead>
+        <tbody>
+          <tr><td><b>Seller and operator</b></td><td>Microsoft (Azure)</td><td>Anthropic</td><td>Anthropic</td></tr>
+          <tr><td><b>Data processor</b></td><td>Microsoft, under the DPA</td><td>Anthropic, as independent data processor</td><td>Anthropic, as independent data processor</td></tr>
+          <tr><td><b>Where prompts and outputs are processed</b></td><td>Per deployment type (Standard, Data Zone, Global)</td><td>On Azure infrastructure, end to end; the privacy page states they never leave Azure</td><td>On Anthropic infrastructure, possibly outside Azure and your geography</td></tr>
+          <tr><td><b>Data at rest and residency</b></td><td>Your designated geography</td><td>Your Azure geography; processing scoped to Global or Data Zone (US)</td><td>May be processed outside Azure</td></tr>
+          <tr><td><b>Governing terms</b></td><td>Microsoft DPA and Product Terms</td><td>Anthropic DPA and Commercial Terms</td><td>Anthropic DPA and Commercial Terms</td></tr>
+          <tr><td><b>SLA</b></td><td>Azure SLAs</td><td>Anthropic, as operator, provides any SLA</td><td>Anthropic, as operator, provides any SLA</td></tr>
+          <tr><td><b>Support</b></td><td>Microsoft Support</td><td>Microsoft Support</td><td>Microsoft Support</td></tr>
+        </tbody></table></div>
+      <ul class="tight">
+        <li>Microsoft still provides the Foundry experience, Azure infrastructure and billing, and processes that data under the DPA and Marketplace terms. Microsoft may share customer contact information, transaction details and usage information with Anthropic so Anthropic can operate and support the model.</li>
+        <li>If a Claude model is available in both versions, you land on the <b>Azure-hosted</b> version by default.</li>
+        <li><b>Fireworks on Foundry</b> is different again: a Microsoft first-party consumption service where Fireworks AI is a <b>Microsoft subprocessor</b>. Microsoft's Product Terms and DPA govern it (with documented exceptions: no SOC 1 Type 2, PCI, HITRUST or FedRAMP), model providers do not get access to customer data, and data does travel to Fireworks' GPUs. Data at rest stays in the region you pick (US only today), and you opt in through the portal.</li>
+        <li>For any other partner model, read the model card and provider terms; you are responsible for the data that flows to a Non-Microsoft Product and for reviewing its retention and location practices.</li>
+      </ul>
+    </div>
+
+    <div class="tabpanel">
+      <p>Abuse monitoring for models sold by Azure detects recurring content or behavior that suggests use in a way that might violate the Code of Conduct. It has four parts:</p>
+      <ol class="steps">
+        <li><b>Content classification</b><span>Classifier models detect harmful text and images in prompts and completions, assign severity levels, and feed signals into pattern detection.</span></li>
+        <li><b>Abuse pattern capture</b><span>Algorithms and heuristics score indicators across your usage: how often and how severe harmful content is, and whether it looks intentional (for example recurring jailbreak attempts).</span></li>
+        <li><b>Review and decision</b><span>Flagged content or suspicious patterns may be sampled for review. <b>By default the review is automated</b>, using AI models such as LLMs, and prompts and completions reviewed this way are not stored by the system or used to train models. If automated review is not confident enough, or is unavailable, <b>authorized Microsoft employees may review</b> the flagged content.</span></li>
+        <li><b>Notification and action</b><span>When abuse is confirmed you are told by email. Except for severe or recurring abuse, you typically get a chance to explain or fix it. Failing to address it, or severe or recurring abuse, may lead to suspension or termination of access.</span></li>
+      </ol>
+      <div class="grid g2">
+        <div class="card"><h4>Who can see flagged content</h4><ul class="tight"><li>Only data already flagged, or part of a flagged pattern, can reach a human reviewer.</li><li>Reviewers are authorized Microsoft employees using <b>point-wise queries by request ID</b>, <b>Secure Access Workstations</b> and <b>just-in-time approval</b> from team managers.</li><li>For models deployed in the European Economic Area, those employees are located in the EEA.</li></ul></div>
+        <div class="card"><h4>Where it is kept</h4><ul class="tight"><li>The abuse monitoring data store is <b>logically separated per customer resource</b> (each request carries the Foundry resource ID).</li><li>A separate store exists in each geography where the model is available, and your content is stored in the geography of your resource, inside the service boundary.</li></ul></div>
+      </div>
+      <h4 style="margin-top:14px">Modified abuse monitoring</h4>
+      <p>If you process highly sensitive data, or cannot permit Microsoft to store and human-review prompts and completions, you can apply for <b>modified abuse monitoring</b> through the Limited Access process (some advanced models have stricter criteria). If approved, <b>the data storage and human review are not performed</b>. Automated review can still happen, and severe or recurring abuse may still lead to limits on access. Detection may be less accurate, so be ready to respond to a notification.</p>
+      <div class="code" data-lang="azure cli"><pre># Verify that data storage for abuse monitoring is off (after approval)
+az cognitiveservices account show -n &lt;resource-name&gt; -g &lt;resource-group&gt;
+# Look for the capability:  { "name": "ContentLogging", "value": "false" }
+# The attribute appears ONLY when storage is off; if it is absent, storage is on.</pre></div>
+    </div>
+
+    <div class="tabpanel">
+      <p>Abuse monitoring for third-party models is run by the provider, not by Microsoft's abuse monitoring system described in the previous tab. For <b>Claude</b>, the docs say:</p>
+      <ul class="tight">
+        <li><b>Anthropic safety systems and safeguards are active in both hosting options</b>, supported by Microsoft. Harmful content screening, safety review and Anthropic-specific processing are described in Anthropic's documentation and in the terms shown at deployment.</li>
+        <li><b>Hosted on Azure:</b> automatic safeguards flag content that might be sent to <b>Anthropic Trust &amp; Safety</b> for review, and Anthropic personnel review customer content on an <b>exceptions-only</b> basis to investigate potential safety violations, subject to Anthropic's terms.</li>
+        <li><b>Data retention</b> is governed by Anthropic's Data Processing Addendum and Commercial Terms of Service, not by the Microsoft abuse monitoring data store.</li>
+        <li>Your use must comply with <b>Anthropic's Acceptable Use Policy</b>.</li>
+        <li><b>Foundry does not provide built-in content filtering for Claude at deployment time.</b> Configure Azure AI Content Safety during inference if you need Foundry-style guardrails.</li>
+      </ul>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Question</th><th>Models sold by Azure (1P)</th><th>Partner models (3P), Claude as the example</th></tr></thead>
+        <tbody>
+          <tr><td><b>Who monitors for abuse?</b></td><td>Microsoft's abuse monitoring system</td><td>Anthropic, with Microsoft support</td></tr>
+          <tr><td><b>Default review</b></td><td>Automated, using AI models; human review only if needed</td><td>Automatic safeguards; Anthropic review on an exceptions-only basis</td></tr>
+          <tr><td><b>Can I opt out of human review?</b></td><td>Yes, by applying for modified abuse monitoring (Limited Access)</td><td>Governed by Anthropic's terms; the Foundry docs do not describe an opt-out, so ask your Microsoft or Anthropic account team</td></tr>
+          <tr><td><b>Where is flagged content stored?</b></td><td>Per-geography store in your resource's geography</td><td>Per Anthropic's terms and the hosting option</td></tr>
+          <tr><td><b>Built-in content filtering?</b></td><td>Yes, guardrails (DefaultV2) on by default</td><td>Not at deployment time for Claude; add Content Safety</td></tr>
+          <tr><td><b>How do I check?</b></td><td><code>ContentLogging</code> capability on the resource</td><td>Anthropic's documentation and the terms shown at deployment</td></tr>
+        </tbody></table></div>
+      <div class="callout"><div>The docs do not publish a per-model abuse-monitoring description for every partner model. For any model outside Claude and Fireworks, check the model card and the provider's terms, and ask your Microsoft account team to confirm in writing.</div></div>
+    </div>
+
+    <div class="tabpanel">
+      <ol class="steps">
+        <li><b>Match the deployment type to your residency need</b><span>Standard for a single geography, Data Zone for US or EU, Global for broadest capacity. Remember data at rest stays in your geography either way.</span></li>
+        <li><b>Prefer Microsoft Entra ID and RBAC over keys</b><span>Agents, evaluations and datasets require Entra ID anyway. Use customer-managed keys where policy requires them.</span></li>
+        <li><b>Decide what you store</b><span>Responses API history, files, stored completions and traces all persist data. Set retention and delete what you do not need. Trace content can be restricted.</span></li>
+        <li><b>Use standard agent setup when data must stay in your resources</b><span>Bring your own Storage, AI Search and Cosmos DB, and use separate Foundry resources where resource-scoped capabilities need isolation.</span></li>
+        <li><b>Protect response IDs and prune agent versions</b><span>Treat IDs as sensitive, and delete versions that held unsafe configurations.</span></li>
+        <li><b>For highly sensitive workloads, consider modified abuse monitoring</b><span>Check eligibility under Limited Access, and verify <code>ContentLogging</code> is false after approval.</span></li>
+        <li><b>Choose Claude hosting deliberately</b><span>Hosted on Azure if you need residency in a geography or Data Zone (US). Add Content Safety because there is no built-in deployment-time filtering.</span></li>
+        <li><b>Review every non-Microsoft term</b><span>Marketplace offers, partner models, third-party MCP servers and Bing grounding each carry their own terms. Record the decision.</span></li>
+        <li><b>Layer on Microsoft Purview and Defender</b><span>Auditing, sensitivity classification and DSPM for AI give visibility into prompt and response data; Defender detects jailbreak and input attacks.</span></li>
+        <li><b>Disable preview features in production</b><span>Preview features may follow different privacy practices.</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="refs"><span>Learn more</span>
+    {{doc:responsible-ai/openai/data-privacy|Data, privacy and security: models sold by Azure}}
+    {{doc:openai/concepts/abuse-monitoring|Abuse monitoring}}
+    {{doc:responsible-ai/openai/limited-access|Limited access and modified abuse monitoring}}
+    {{doc:responsible-ai/claude-models/data-privacy|Data privacy for Claude models}}
+    {{doc:foundry-models/concepts/claude-models-hosting-comparison|Azure-hosted vs Anthropic-hosted Claude}}
+    {{doc:responsible-ai/agents/data-privacy-security|Data privacy for Agent Service}}
+    {{doc:how-to/fireworks/privacy-compliance-faq|Fireworks on Foundry privacy FAQ}}
+    {{doc:responsible-ai/agents/transparency-note|Agent Service transparency note}}
+    {{doc:responsible-ai/openai/customer-copyright-commitment|Customer Copyright Commitment}}
+    {{doc:concepts/customer-managed-keys|Customer-managed keys}}
+    {{doc:guardrails/default-safety-policies|Default safety policies}}
+    {{doc:responsible-use-of-ai-overview|Responsible AI overview}}
+    {{url:https://learn.microsoft.com/en-us/legal/ai-code-of-conduct|Code of conduct}}
+    {{url:https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA|Data Protection Addendum}}
+    {{url:https://www.microsoft.com/en-us/trust-center|Microsoft Trust Center}}
+    {{url:https://azure.microsoft.com/explore/global-infrastructure/data-residency/|Data residency in Azure}}
+  </div>
+</section>

@@ -70,7 +70,7 @@
 
   <h3>Compute and runtime, explained</h3>
   <div class="tabs">
-    <div class="tablist" role="tablist"><button>Compute sizes</button><button>Session lifecycle</button><button>Protocols</button><button>Identity &amp; security</button><button>Deploy &amp; operate</button><button>Limits, regions &amp; price</button></div>
+    <div class="tablist" role="tablist"><button>Compute sizes</button><button>Session lifecycle</button><button>Protocols</button><button>Identity &amp; security</button><button>Deploy &amp; operate</button><button>Limits, regions &amp; price</button><button>Long-running, registry &amp; autopilots</button></div>
 
     <div class="tabpanel">
       <div class="grid g3">
@@ -154,6 +154,26 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
         <li><b>Third-party risk:</b> third-party servers, code and non-Azure-direct models are used at your own risk and you own responsible AI mitigations.</li>
       </ul>
     </div>
+
+    <div class="tabpanel">
+      <h4>Long-running agents <span class="tag prev">Preview</span></h4>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Capability</th><th>What it gives you</th><th>What it does not give you</th></tr></thead>
+        <tbody>
+          <tr><td><b>Background execution</b></td><td>Work continues without holding the HTTP connection open; clients poll or reconnect.</td><td>Recovery after the owning process stops.</td></tr>
+          <tr><td><b>Resilient execution</b></td><td>Durable work identity, persisted input, lease-based process-loss detection and handler reentry after a crash, restart or redeployment.</td><td>Automatic preservation of every intermediate state or side effect. Recovery reenters the handler from its beginning, so your code uses durable checkpoints and idempotency keys.</td></tr>
+          <tr><td><b>Stream replay</b></td><td>Retained events a reconnecting client can receive from a cursor.</td><td>A checkpoint of the agent's internal state.</td></tr>
+        </tbody></table></div>
+      <ul class="tight">
+        <li><b>Steering:</b> redirect an agent that is still working. A new input queues behind the active turn and the running handler winds down cooperatively, so there is no rejected turn and no two turns racing.</li>
+        <li><b>Human in the loop:</b> a multi-turn chain can suspend indefinitely to wait for an approval, an answer or missing input, then resume the same handler under the same task ID.</li>
+        <li>For Responses, full crash recovery applies only to stored background responses when the server opts in. Foreground responses stay tied to the client connection.</li>
+      </ul>
+      <h4 style="margin-top:16px">Bring your own registry</h4>
+      <p>Besides Azure Container Registry (including a private ACR for projects created after June 25, 2026), a hosted agent can pull its image from an <b>authenticated registry outside Azure</b>, such as JFrog Artifactory or a self-hosted Docker Distribution registry. The pull uses <b>OpenID Connect token exchange</b> between a Microsoft Entra application and the project's managed identity, so the registry issues short-lived credentials and no password is stored.</p>
+      <h4 style="margin-top:16px">Autopilots</h4>
+      <p>An <b>autopilot</b> is an agent that also has an <b>Entra agent user account</b>, giving it its own mailbox, calendar, OneDrive, Teams presence and org-chart position so it can act in Microsoft 365 as itself, including in group chats and with no user present. You publish a <b>blueprint</b>, and teams create their own instances, each with its own identity, permissions and manager. <b>Only hosted agents can be published as autopilot blueprints.</b> Compare with the other two types: an <i>assistive</i> agent acts on behalf of a signed-in user, and a <i>background service</i> agent acts as itself with app-only permissions but cannot perform Microsoft 365 actions.</p>
+    </div>
   </div>
 
   <h3>Prompt agent or hosted agent?</h3>
@@ -174,6 +194,10 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
     {{doc:agents/concepts/hosted-agent-contract|Runtime contract}}
     {{doc:agents/concepts/agent-state-store|Durable state store}}
     {{doc:agents/concepts/long-running-agent-resilience|Long-running agent resilience}}
+    {{doc:agents/how-to/steer-hosted-agent|Steer an in-flight turn}}
+    {{doc:agents/how-to/add-human-in-the-loop|Human-in-the-loop approval}}
+    {{doc:agents/how-to/private-registry-connections|Bring your own registry}}
+    {{doc:agents/concepts/autopilot-overview|What is an autopilot?}}
     {{doc:agents/how-to/author-azure-yaml|Author azure.yaml}}
     {{doc:how-to/develop/framework-hosted-agents|Host Agent Framework agents}}
     {{doc:how-to/develop/langchain-hosted-agents|Host LangGraph agents}}

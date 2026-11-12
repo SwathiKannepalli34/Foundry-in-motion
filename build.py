@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 BASE = "https://learn.microsoft.com/en-us/azure/foundry/"
-LAST_VERIFIED = "2026-10-25"
+LAST_VERIFIED = "2026-11-11"
 
 DOC = re.compile(r"\{\{doc:([^|}]+)\|([^}]+)\}\}")
 URL = re.compile(r"\{\{url:([^|}]+)\|([^}]+)\}\}")

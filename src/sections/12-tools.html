@@ -102,6 +102,7 @@
         <li>Route new MCP tools through an <b>AI gateway</b> <span class="tag prev">Preview</span> to enforce authentication, rate limits, IP restrictions and audit logging without changing the MCP server or agent code.</li>
         <li>Apply <b>guardrails</b> to tool calls and tool responses at the toolbox.</li>
         <li>Version toolboxes and promote a new default only after testing.</li>
+        <li><b>Network isolation:</b> a toolbox is a logical container and deploys no networking of its own; the hosting project's networking governs all access. Behind a private link project, agents reach the toolbox MCP endpoint through the project's private endpoint, while each downstream tool's traffic depends on where that service is hosted (some need public or backbone connectivity).</li>
       </ul>
     </div>
   </div>
@@ -117,6 +118,7 @@
     {{doc:agents/how-to/tools/tool-authentication|Tool identity and authentication}}
     {{doc:agents/how-to/tools/governance|Govern MCP tools}}
     {{doc:agents/how-to/tools/tool-search|Tool search}}
+    {{doc:agents/how-to/tools/toolbox-network-isolation|Toolbox network isolation}}
     {{doc:how-to/connections-add|Create a connection}}
   </div>
 </section>

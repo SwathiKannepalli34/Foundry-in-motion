@@ -9,20 +9,20 @@
 
 | Stage | Topics |
 |---|---|
-| **Foundations** | What Foundry is, a tab-by-tab tour of the portal, and creating a project (portal, SDK, access roles, bring-your-own resources) |
+| **Foundations** | What Foundry is, what's new and a feature readiness table (GA vs preview, retirement dates), a tab-by-tab tour of the portal, and creating a project (portal, SDK, access roles, bring-your-own resources) |
 | **Models** | The model catalog, deployment types, model router, and frontier model access (OpenAI, Claude, partner and Microsoft models) |
 | **Agents** | Prompt agents, RAG agents, Foundry IQ, Memory, the agent optimizer, the toolbox and connectors, and publishing to Microsoft Copilot and Teams |
 | **Hosted agents** | Architecture, compute sizes, runtime and session lifecycle, protocols, identity, and deployment |
 | **Cost** | Deployment options, tokens, provisioned throughput (PTUs), and Claude Consumption Units (CCUs) with ways to optimize them |
 | **Trust and operate** | Tracing and monitoring, evaluations and AI red teaming, and guardrails at four intervention points |
-| **Govern** | Identity, policy, compliance, the Foundry Control Plane, and the AI Gateway (API Management tiers, token limits, policies) |
+| **Govern** | Data privacy and abuse monitoring (models sold by Azure vs partner models such as Claude), identity, policy, compliance, the Foundry Control Plane, and the AI Gateway (API Management tiers, token limits, policies) |
 
 ## Built to present
 
 - **Visuals specific to Foundry.** Animated diagrams show the hosted agent architecture, agentic retrieval, the memory loop and the optimizer loop.
 - **Interactive tools.** Click through a replica of the portal, pick a deployment type, estimate monthly token cost, and forecast CCUs with what-if sliders.
 - **Presenter controls.** A motion on/off switch (saved in the browser, and off by default when the operating system asks for reduced motion), light and dark themes, an Expand all button, and a layout that works on phones.
-- **Grounded in official documentation.** Each section ends with links to Microsoft Learn (`learn.microsoft.com/azure/foundry`). All 155 links were checked and returned 200 when the guide was published. Preview features are tagged.
+- **Grounded in official documentation.** Each section ends with links to Microsoft Learn (`learn.microsoft.com/azure/foundry`). All 176 Microsoft Learn links were checked and returned 200 on 2026-11-11. Preview features are tagged.
 
 ## Using it with customers
 
@@ -45,4 +45,4 @@ python build.py --check    # also verify every learn.microsoft.com link returns 
 
 ## Grounding
 
-Facts come from Microsoft Learn pages read in October 2026. Items marked Preview change often, so re-run the link check and re-read the linked page before each customer session.
+Facts come from Microsoft Learn pages read between August and November 2026 and re-validated on 2026-11-11 against the "What's new" page and the general availability readiness table. Items marked Preview change often, so re-run the link check and re-read the linked page before each customer session.

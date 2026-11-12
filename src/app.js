@@ -58,6 +58,14 @@ $("#burger").addEventListener("click", () => {
   $("#burger").setAttribute("aria-expanded", String(open));
 });
 
+/* ---------- Auto-number section eyebrows so sections can be inserted without renumbering ---------- */
+sections.forEach((s, i) => {
+  const eb = $(".sec-head .eyebrow", s);
+  if (!eb) return;
+  const t = [...eb.childNodes].find(n => n.nodeType === 3);
+  if (t) t.textContent = t.textContent.replace(/^\s*\d+\s*·\s*/, String(i + 1).padStart(2, "0") + " · ");
+});
+
 /* ---------- Reveal on scroll ---------- */
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.08 });
 $$(".sec-head, .card, .diagram, .tabs, .grid > *, .portal, .spectrum, .callout, .steps, .tbl-wrap, details").forEach(e => { e.classList.add("reveal"); io.observe(e); });
@@ -99,11 +107,11 @@ const PORTAL = {
   ]},
   Discover: { scope: "Selected project", color: "var(--violet)", items: [
     { n: "Model catalog", w: "Browse and deploy models. Filter <b>Collections</b> to <b>Direct from Azure</b> for models sold by Azure, or browse partner and community models.", b: ["Open a model card to see capabilities, <b>Pricing</b>, and <b>Deploy</b> (including <b>Custom settings</b> for deployment type)", "More than 10,000 models from Microsoft, OpenAI, Anthropic, Meta and others"], u: ["concepts/foundry-models-overview", "Foundry Models overview"] },
-    { n: "Model benchmarks", w: "Leaderboards and side-by-side comparison to help choose a model.", b: ["Compare models on quality, cost and throughput", "Run benchmark evaluations against your own data"], u: ["concepts/model-benchmarks", "Model leaderboards"] },
+    { n: "Model benchmarks", w: "Leaderboards and side-by-side comparison to help choose a model. <span class='tag prev'>Preview</span>", b: ["Compare models on quality, cost and throughput", "Run benchmark evaluations against your own data"], u: ["concepts/model-benchmarks", "Model leaderboards"] },
   ]},
   Build: { scope: "Selected project", color: "var(--cyan)", groups: true, items: [
     { g: "Create" },
-    { n: "Agents", w: "Create and manage prompt, workflow and hosted agents. Each agent has its own tabs.", b: ["<b>Details</b>: active version, endpoint and channels", "<b>Monitor</b>: token usage, latency, run success, evaluation and red-team results <span class='tag prev'>Preview</span>", "<b>Optimize</b>: agent optimizer wizard", "<b>Publish</b>: Teams and Microsoft Copilot, or a stable endpoint"], u: ["agents/overview", "Agent Service overview"] },
+    { n: "Agents", w: "Create and manage prompt, workflow and hosted agents. Each agent has its own tabs.", b: ["<b>Details</b>: active version, endpoint and channels", "<b>Monitor</b>: token usage, latency, run success, evaluation and red-team results <span class='tag prev'>Preview</span>", "<b>Optimize</b>: agent optimizer wizard <span class='tag prev'>Limited preview</span>", "<b>Publish</b>: Teams and Microsoft Copilot (GA), or a stable endpoint"], u: ["agents/overview", "Agent Service overview"] },
     { n: "Models", w: "Your deployments, plus the playgrounds to try them.", b: ["Select a deployed model to open its <b>playground</b>", "Compare outputs, tune parameters, add a system message"], u: ["concepts/concept-playgrounds", "Playgrounds"] },
     { n: "Services", w: "Foundry Tools: Speech, Vision, Language, Content Safety, Content Understanding and others.", b: ["Pre-built AI services you can also expose as agent tools"], u: ["agents/how-to/tools/azure-ai-speech", "Azure Speech tool"] },
     { n: "Tools", w: "The tool catalog and custom tools your agents can call.", b: ["Catalog of connectors and MCP servers (1,000+ connectors)", "<b>Custom &gt; Model Context Protocol</b> for your own MCP server", "Group tools into a <b>Toolbox</b>"], u: ["agents/concepts/toolbox-overview", "Toolbox"] },
@@ -115,15 +123,15 @@ const PORTAL = {
     { n: "Evaluations", w: "Create, run and compare evaluations on models and agents.", b: ["Built-in quality, safety, RAG and agent evaluators", "View and analyze results; cluster analysis"], u: ["concepts/evaluation-overview", "Evaluation overview"] },
     { n: "Fine-tune", w: "Customize a model on your own data when prompting and retrieval are not enough.", b: ["Charged for training, hosting (hourly, even if idle) and inference", "Deploy fine-tuned models, then evaluate safety"], u: ["fine-tuning/overview", "Fine-tuning overview"] },
   ]},
-  Operate: { scope: "All projects in the subscription", color: "var(--amber)", items: [
+  Operate: { scope: "All projects in the subscription (control plane, preview)", color: "var(--amber)", items: [
     { n: "Overview", w: "Fleet health at a glance: active agents, cost trends, run completion, prevented behaviors.", b: ["Drill into anomalies and cost spikes", "Trend-based health scores and alert summaries"], u: ["control-plane/overview", "Foundry Control Plane"] },
     { n: "Assets", w: "One searchable table of every agent, model and tool across projects.", b: ["Filter by version, tags, health score, cost, alerts, token usage", "Drill into Evaluation or Monitoring; see inline recommendations", "Observe and modify guardrails"], u: ["control-plane/how-to-manage-agents", "Manage agents at scale"] },
     { n: "Compliance", w: "Define, apply and monitor guardrail policies; integrates Azure Policy, Microsoft Defender and Microsoft Purview.", b: ["Versioned policies and assignments", "Surface non-compliant assets and bulk-remediate"], u: ["control-plane/how-to-manage-compliance-security", "Compliance and security"] },
-    { n: "Tracing", w: "Inspect traces of agent and model runs (OpenTelemetry, stored in Application Insights).", b: ["Replay traces, annotate with human feedback", "Convert traces into evaluation datasets"], u: ["observability/concepts/trace-agent-concept", "Tracing concepts"] },
+    { n: "Tracing", w: "Inspect traces of agent and model runs (OpenTelemetry, stored in Application Insights). GA for prompt and hosted agents.", b: ["Replay traces, annotate with human feedback", "Convert traces into evaluation datasets <span class='tag prev'>Preview</span>"], u: ["observability/concepts/trace-agent-concept", "Tracing concepts"] },
   ]},
   Manage: { scope: "Selected project and its parent resource", color: "var(--green)", items: [
     { n: "Quota", w: "Which deployments consume how much quota. Toggle <b>Show all</b> to see available quota and regions before you deploy.", b: ["Request more quota from the quota page"], u: ["how-to/quota", "Manage quotas"] },
-    { n: "AI Gateway", w: "Enable Azure API Management as the AI Gateway for the resource; set token limits per project.", b: ["<b>Add AI Gateway</b>, then <b>Token management</b> &gt; <b>+ Set limit</b>", "New projects have the gateway enabled by default; add existing projects manually"], u: ["configuration/enable-ai-api-management-gateway-portal", "Configure AI Gateway"] },
+    { n: "AI Gateway", w: "Enable Azure API Management as the AI Gateway for the resource; set token limits per project. <span class='tag prev'>Preview</span>", b: ["<b>Add AI Gateway</b>, then <b>Token management</b> &gt; <b>+ Set limit</b>", "New projects have the gateway enabled by default; add existing projects manually"], u: ["configuration/enable-ai-api-management-gateway-portal", "Configure AI Gateway"] },
     { n: "Project details", w: "Project configuration plus people and connections.", b: ["<b>Users</b> tab: add or remove access (Foundry roles)", "<b>Connected resources</b> tab: storage, Foundry Tools and others", "Resource ID, endpoint, subscription, location"], u: ["concepts/rbac-foundry", "Role-based access control"] },
     { n: "Resource details", w: "The parent Foundry resource and every project it contains.", b: ["Open the resource in the Azure portal", "<b>Projects</b> tab: add projects to the resource"], u: ["concepts/architecture", "Service architecture"] },
   ]},

@@ -28,11 +28,11 @@
       <p>Traces are built from <b>spans</b> (single operations, nestable) with <b>attributes</b>, following the <b>OpenTelemetry GenAI semantic conventions</b> (development status, may change). Microsoft and Cisco Outshift contribute conventions for multi-agent workflows, integrated in Foundry, Microsoft Agent Framework, LangChain and LangGraph.</p>
       <div class="grid g3 auto">
         <div class="mini"><b>What is captured</b><span>User inputs and agent outputs, tool calls and results, token consumption, duration and latency.</span></div>
-        <div class="mini"><b>Status</b><span>Tracing is GA for prompt and hosted agents. Workflow and external agents are in preview.</span></div>
+        <div class="mini"><b>Status</b><span>Tracing is GA for prompt and hosted agents; workflow and external agents are in preview. Tracing behind a virtual network is preview, and the Monitor dashboard is preview.</span></div>
         <div class="mini"><b>Where it lives</b><span>Azure Monitor Application Insights; view in the Foundry portal (Operate › Tracing) or in Azure Monitor.</span></div>
         <div class="mini"><b>Replay and annotate</b><span>Replay agent traces; annotate with human feedback; log end-user feedback.</span></div>
-        <div class="mini"><b>Traces to datasets</b><span>Convert traces into evaluation datasets to test against real behavior.</span></div>
-        <div class="mini"><b>Protect sensitive content</b><span>Restrict access to sensitive content in traces; Entra authentication for trace ingestion.</span></div>
+        <div class="mini"><b>Traces to datasets <span class="tag prev">Preview</span></b><span>Convert traces into evaluation datasets to test against real behavior.</span></div>
+        <div class="mini"><b>Protect sensitive content</b><span>Restrict access to sensitive content in traces. <b>Entra authentication for trace ingestion</b> <span class="tag prev">Preview</span> replaces key-based ingestion with identity-based access to the connected Application Insights resource.</span></div>
       </div>
     </div>
 
@@ -90,6 +90,8 @@
     {{doc:observability/how-to/how-to-monitor-agents-dashboard|Agent Monitoring Dashboard}}
     {{doc:observability/how-to/agent-insights|Insights in Foundry}}
     {{doc:observability/how-to/traces-to-dataset|Traces to datasets}}
+    {{doc:observability/how-to/trace-ingestion-entra-authentication|Entra authentication for trace ingestion}}
+    {{doc:agents/concepts/agent-365-integration|Agent 365 integration}}
     {{doc:control-plane/monitoring-across-fleet|Monitor fleet health}}
     {{doc:control-plane/register-custom-agent|Register custom agents}}
     {{doc:foundry-models/how-to/monitor-models|Monitor model deployments}}

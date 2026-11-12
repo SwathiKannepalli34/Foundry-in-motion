@@ -157,7 +157,7 @@ details .inner b, details .inner strong { color:var(--ink); }
   background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 50%,var(--violet))); color:#fff; box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent); }
 .steps li::after { content:""; position:absolute; left:16px; top:38px; bottom:2px; width:2px; background:linear-gradient(var(--line2),transparent); }
 .steps li:last-child::after { display:none; }
-.steps li b { display:block; } .steps li span { color:var(--mute); }
+.steps li > b { display:block; } .steps li span { color:var(--mute); } .steps li span b { color:var(--ink); }
 
 /* tables */
 .tbl { width:100%; border-collapse:separate; border-spacing:0; font-size:14.5px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface); }
@@ -283,7 +283,7 @@ input[type=range] { padding:0; accent-color:var(--accent); height:28px; }
   <nav id="nav"></nav>
   <div class="side-foot">
     <div class="progress"><span id="progress"></span></div>
-    <small>Docs verified 2026-10-25</small>
+    <small>Docs verified 2026-11-11</small>
   </div>
 </aside>
 
@@ -313,7 +313,7 @@ input[type=range] { padding:0; accent-color:var(--accent); height:28px; }
     <p class="lede">One platform to build agents, choose models, ground them in your knowledge, run them at scale, and prove they are safe, observable and under control. This guide walks the whole path with live visuals and links to the official docs.</p>
     <div class="stats">
       <div class="stat"><b>10,000+</b><span>models in the catalog</span></div>
-      <div class="stat"><b>3</b><span>agent styles: prompt, workflow, hosted</span></div>
+      <div class="stat"><b>2</b><span>core agent styles: prompt and hosted</span></div>
       <div class="stat"><b>1,000+</b><span>connectors in the tool catalog</span></div>
       <div class="stat"><b>4</b><span>guardrail intervention points</span></div>
     </div>
@@ -338,7 +338,7 @@ input[type=range] { padding:0; accent-color:var(--accent); height:28px; }
         <g class="float"><rect x="272" y="104" width="150" height="132" rx="14" fill="url(#hg)" opacity=".92"/>
           <text x="347" y="134" text-anchor="middle" font-size="15" fill="#fff" style="fill:#fff;font-weight:700">Agents</text>
           <text x="347" y="158" text-anchor="middle" font-size="12" style="fill:#fff">Prompt</text>
-          <text x="347" y="178" text-anchor="middle" font-size="12" style="fill:#fff">Workflow</text>
+          <text x="347" y="178" text-anchor="middle" font-size="12" style="fill:#fff">Voice</text>
           <text x="347" y="198" text-anchor="middle" font-size="12" style="fill:#fff">Hosted (your code)</text></g>
         <g>
           <rect class="box" x="448" y="104" width="130" height="56" rx="12"/><text x="513" y="128" text-anchor="middle" font-size="14">Models</text><text class="t-f" x="513" y="146" text-anchor="middle" font-size="11">catalog &amp; deployments</text>
@@ -371,7 +371,7 @@ input[type=range] { padding:0; accent-color:var(--accent); height:28px; }
   </div>
 
   <div class="grid g3 auto">
-    <div class="mini" style="--c:var(--blue)"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div><b>Agents</b><span>Declarative <b>prompt agents</b> (including voice), <b>workflows</b>, and <b>hosted agents</b> that run your own code in a managed runtime.</span></div>
+    <div class="mini" style="--c:var(--blue)"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div><b>Agents</b><span>Declarative <b>prompt agents</b> (including voice), and <b>hosted agents</b> that run your own code in a managed runtime. Autopilots build on hosted agents.</span></div>
     <div class="mini" style="--c:var(--violet)"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg></div><b>Models</b><span>More than 10,000 models from Microsoft, OpenAI, Anthropic, Meta and others, deployed with the billing and residency option you choose.</span></div>
     <div class="mini" style="--c:var(--cyan)"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 6l4 4-9 9H5v-4z"/><path d="M13 7l4 4"/></svg></div><b>Tools &amp; knowledge</b><span>A <b>Toolbox</b> packages tools behind one MCP endpoint; <b>Foundry IQ</b> and <b>memory</b> ground agents in your content and context.</span></div>
     <div class="mini" style="--c:var(--green)"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></div><b>Observability</b><span>Trace and monitor agents and models, with dashboards for tokens, latency, success rate and evaluation scores.</span></div>
@@ -383,7 +383,7 @@ input[type=range] { padding:0; accent-color:var(--accent); height:28px; }
   <p>Most work on Foundry centers on an <b>agent</b>: a model paired with instructions and tools that can reason over a request and take action. The main decision is how much of the runtime you want to control. You can start declarative and move to code later.</p>
   <div class="spectrum">
     <div class="s1"><b>Prompt agent</b><span>Instructions + model + tools, defined in the portal or SDK. Foundry hosts and runs it. Nothing to deploy.</span></div>
-    <div class="s2"><b>Workflow agent <span class="tag prev">Preview</span></b><span>Orchestrates several agents and steps when one task spans more than one agent.</span></div>
+    <div class="s2"><b>Workflow agent <span class="tag prev">Preview</span> <span class="tag prev">Retiring</span></b><span>Visual orchestration of agents and steps. <b>Foundry is retiring workflows on December 1, 2026.</b> Use Microsoft Agent Framework for new orchestration.</span></div>
     <div class="s3"><b>Hosted agent</b><span>Your code and framework (Agent Framework, LangGraph, Semantic Kernel, custom) packaged as a container. Foundry gives it an endpoint, identity, scaling and observability.</span></div>
   </div>
 
@@ -413,6 +413,99 @@ input[type=range] { padding:0; accent-color:var(--accent); height:28px; }
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/concepts/capabilities" target="_blank" rel="noopener">Product and capability map</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/concepts/capability-reference" target="_blank" rel="noopener">Capability reference</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/concepts/architecture" target="_blank" rel="noopener">Service architecture</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/how-to/navigate-from-classic" target="_blank" rel="noopener">Migrate from the classic portal</a>
+  </div>
+</section>
+
+<section class="sec" id="whats-new" data-nav="What's new & readiness" data-group="Foundations" data-c="green">
+  <div class="sec-head">
+    <span class="eyebrow">02 · Fresh from the docs</span>
+    <h2>What's new, and how ready each feature is</h2>
+    <p class="lede">Foundry changes monthly. This section was re-checked against Microsoft Learn on <b>November 11, 2026</b>: recent additions from the "What's new" page and the feature readiness table from the general availability overview. Use it to decide what is safe to put in production and what to pilot.</p>
+  </div>
+
+  <div class="callout warn"><div><b>Rule of thumb for customers.</b> Preview features are provided without a service-level agreement and Microsoft does not recommend them for production workloads. Decide your policy up front, and use the documented controls to hide or block preview features in production environments.</div></div>
+
+  <h3>Recent additions worth knowing</h3>
+  <div class="grid g3 auto">
+    <div class="mini" style="--c:var(--violet)"><b>Autopilots</b><span>Agents with their own Entra agent user account (mailbox, calendar, Teams presence), built from hosted-agent blueprints, so they can work with a whole team. <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/autopilot-overview" target="_blank" rel="noopener">Overview</a></span></div>
+    <div class="mini"><b>Long-running hosted agents <span class="tag prev">Preview</span></b><span>Crash recovery, stream replay with reconnect, steering an in-flight turn, human-in-the-loop approval and a durable state store. <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/long-running-agent-resilience" target="_blank" rel="noopener">Resilience</a></span></div>
+    <div class="mini"><b>Routines <span class="tag ga">GA</span></b><span>Run a prompt or hosted agent on a timer, a schedule or an event such as a GitHub issue or a Teams channel message. <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/routines" target="_blank" rel="noopener">Routines</a></span></div>
+    <div class="mini"><b>Bring your own registry</b><span>Hosted agents can pull from an authenticated non-Azure registry using OIDC token exchange; private ACR is supported for projects created after June 25, 2026. <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/private-registry-connections" target="_blank" rel="noopener">Guide</a></span></div>
+    <div class="mini"><b>Toolbox <span class="tag ga">GA</span></b><span>Tool search, skills and a private skill catalog are preview add-ons. New guidance on network isolation for toolboxes. <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/toolbox-network-isolation" target="_blank" rel="noopener">Network isolation</a></span></div>
+    <div class="mini"><b>Foundry IQ</b><span>API-level GA with preview portal access; a knowledge base can feed a Microsoft Copilot Studio agent <span class="tag prev">Preview</span>. <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/what-is-foundry-iq" target="_blank" rel="noopener">Foundry IQ</a></span></div>
+    <div class="mini"><b>Observability</b><span>Microsoft Entra authentication for trace ingestion <span class="tag prev">Preview</span>, plus Agent 365 data collection and permissions. <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/trace-ingestion-entra-authentication" target="_blank" rel="noopener">Entra ingestion</a></span></div>
+    <div class="mini"><b>Evaluations</b><span>SDK guides for conversations, datasets, deployed interactions and synthetic data, and cloud evaluations with admin-connected models. <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/cloud-evaluation" target="_blank" rel="noopener">Cloud evaluation</a></span></div>
+    <div class="mini"><b>Models</b><span>GPT-6.1 and GPT-6 families, Claude Fable 5.2 and Mythos previews, MAI-Thinking-1 and Grok guides, Fireworks on Foundry, and a six-phase model migration guide. <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/model-migration" target="_blank" rel="noopener">Migration guide</a></span></div>
+    <div class="mini"><b>Developer tools</b><span>Foundry Toolkit for VS Code, Foundry Canvas (a GitHub Copilot App extension), and the Foundry MCP Server <span class="tag prev">Preview</span>. <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/how-to/develop/get-started-projects-visual-studio-code" target="_blank" rel="noopener">Toolkit</a></span></div>
+    <div class="mini"><b>Responsible AI</b><span>Content provenance (C2PA and text watermarking), customer-managed key guidance, and data privacy and abuse monitoring (next sections). <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/content-safety/provenance-disclosure" target="_blank" rel="noopener">Provenance</a></span></div>
+    <div class="mini"><b>Foundry Control Plane <span class="tag prev">Preview</span></b><span>Fleet inventory, compliance, quota and the AI Gateway in one place, with Agent 365 for identity-based governance. <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/control-plane/overview" target="_blank" rel="noopener">Control plane</a></span></div>
+  </div>
+
+  <h3>Dates to watch</h3>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>Date</th><th>What</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td><b>December 1, 2026</b></td><td>Foundry retires <b>workflows</b> (the visual workflow builder).</td><td>Use Microsoft Agent Framework for new orchestration; follow the migration guide for existing workflows.</td></tr>
+      <tr><td><b>August 26, 2026</b> (passed)</td><td>Scheduled sunset of the <b>Assistants API</b> and retirement of the <code>azure-ai-inference</code> package.</td><td>Move to the Responses API, the <code>openai</code> package and <code>azure-ai-projects</code> 2.x. Confirm status in the migration guide.</td></tr>
+      <tr><td><b>June 25, 2026</b></td><td>Projects created after this date can use a private Azure Container Registry for hosted agent images.</td><td>Older projects need a registry reachable over its public endpoint.</td></tr>
+      <tr><td><b>Every model</b></td><td>Each model has a retirement date; retirement without a replacement returns HTTP 410 Gone after notice.</td><td>Track the lifecycle policy and plan migrations early.</td></tr>
+    </tbody></table></div>
+
+  <h3>Feature readiness at a glance</h3>
+  <p>From the general availability overview. Statuses describe the named portal experience; individual tools and evaluators can carry their own labels, so check the page for each one.</p>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>Area</th><th>Feature</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="6"><b>Discover</b></td><td>Model catalog, search, tools, solution templates</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Instant access models</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Model leaderboards</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Playgrounds: model, agents, images</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Video playground</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Overall portal for Foundry projects</td><td><span class="tag ga">GA</span> for defined core scenarios</td></tr>
+      <tr><td rowspan="12"><b>Build · agents</b></td><td>Agents (core), hosted agents</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Publish to Microsoft Copilot and Teams</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Routines</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Toolboxes</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Tools catalog</td><td><span class="tag ga">GA</span> (check the label on each tool)</td></tr>
+      <tr><td>Knowledge (Foundry IQ)</td><td><span class="tag prev">Partial GA</span> API-level GA, portal preview</td></tr>
+      <tr><td>Memory</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Voice Live agents</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Agent optimizer</td><td><span class="tag prev">Limited preview</span></td></tr>
+      <tr><td>Workflows</td><td><span class="tag prev">Preview</span> and <b>retiring Dec 1, 2026</b></td></tr>
+      <tr><td>A2A protocol</td><td>v1.0 <span class="tag ga">GA</span> · v0.3 <span class="tag prev">Preview</span></td></tr>
+      <tr><td>Foundry Agent Service</td><td>Agents v2 (Responses API) <span class="tag ga">GA</span>; assistants and v1 agents are not supported in the new portal</td></tr>
+      <tr><td rowspan="9"><b>Build · models and data</b></td><td>Models and deployments</td><td><span class="tag ga">GA</span> (managed compute is a preview deployment type)</td></tr>
+      <tr><td>Fine-tuning</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Data (core)</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Stored completions</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Evaluations</td><td><span class="tag ga">GA</span> (some evaluators and features are preview)</td></tr>
+      <tr><td>Red teaming</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Tracing</td><td><span class="tag ga">GA</span> for prompt and hosted agents; <span class="tag prev">Preview</span> for workflow and external agents</td></tr>
+      <tr><td>Tracing in a virtual network · traces in agent builder · traces to datasets · cluster analysis</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Monitoring</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td rowspan="3"><b>Guardrails</b></td><td>Guardrails for models</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Guardrails for agents</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Controls and intervention points</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td rowspan="3"><b>Operate</b></td><td>Overview, Assets, Compliance (the control plane)</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Quota</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Project and resource details</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td><b>Manage</b></td><td>AI Gateway</td><td><span class="tag prev">Preview</span></td></tr>
+    </tbody></table></div>
+
+  <div class="grid g2">
+    <div class="card"><h4>Authentication</h4><p>Foundry supports API key authentication for most areas, with exceptions: <b>evaluations, the dataset tab, Content Understanding, agents and workflows require Microsoft Entra ID</b>. For governance-sensitive workloads use Entra ID with RBAC; keys do not give the same role-based granularity.</p></div>
+    <div class="card"><h4>Rollout pitfalls from the docs</h4><ul class="tight"><li>Treating preview features as production dependencies without approval.</li><li>Skipping region and model availability checks.</li><li>Assuming every GA feature works behind a virtual network (traces and workflow agents do not yet fully support network isolation).</li><li>Building new production dependencies on workflows.</li></ul></div>
+  </div>
+
+  <div class="refs"><span>Learn more</span>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/whats-new-foundry" target="_blank" rel="noopener">What's new in Microsoft Foundry</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/concepts/general-availability" target="_blank" rel="noopener">General availability overview</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/how-to/disable-preview-features" target="_blank" rel="noopener">Disable preview features</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/reference/foundry-known-issues" target="_blank" rel="noopener">Known issues</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/reference/region-support" target="_blank" rel="noopener">Feature availability by region</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirements" target="_blank" rel="noopener">Model lifecycle and support policy</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/workflow" target="_blank" rel="noopener">Workflow retirement and migration</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/how-to/navigate-from-classic" target="_blank" rel="noopener">Migrate from the classic portal</a>
   </div>
 </section>
@@ -449,7 +542,7 @@ input[type=range] { padding:0; accent-color:var(--accent); height:28px; }
       <tr><td>Guardrails and content filters</td><td>Guardrails + controls</td><td>Operate › Compliance (and Build › Guardrails)</td></tr>
     </tbody></table></div>
 
-  <div class="callout warn"><div><b>Terminology changed too.</b> Threads are now <b>Conversations</b>, runs are <b>Responses</b>, the Assistants API became the <b>Responses API</b>, and agents are versioned (<code>create_version</code>). The Assistants API sunsets <b>August 26, 2026</b> and the <code>azure-ai-inference</code> package retires the same day, so migrate to the <code>openai</code> package and <code>azure-ai-projects</code> 2.x.</div></div>
+  <div class="callout warn"><div><b>Terminology changed too.</b> Threads are now <b>Conversations</b>, runs are <b>Responses</b>, the Assistants API became the <b>Responses API</b>, and agents are versioned (<code>create_version</code>). The Assistants API and the <code>azure-ai-inference</code> package were scheduled to sunset and retire on <b>August 26, 2026</b>. That date has passed, so migrate any remaining code to the <code>openai</code> package, <code>azure-ai-projects</code> 2.x and the Responses API, and confirm current status in the migration guide.</div></div>
 
   <div class="refs"><span>Learn more</span>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/how-to/navigate-from-classic" target="_blank" rel="noopener">Portal navigation reference</a>
@@ -670,7 +763,7 @@ client.projects.begin_create(
     <div class="tabpanel">
       <p>Azure OpenAI in Foundry models are <b>sold by Azure</b>. Model highlights listed in the docs include these series (newest first):</p>
       <div class="grid g3 auto">
-        <div class="mini"><b>GPT-6.1 · GPT-6</b><span><code>gpt-6.1-sol</code>, <code>gpt-6-astra</code>, <code>gpt-6-luna</code>, <code>gpt-6-sol</code></span></div>
+        <div class="mini"><b>GPT-6.1 · GPT-6</b><span><code>gpt-6.1-sol</code>, <code>gpt-6.1-terra</code>, <code>gpt-6-astra</code>, <code>gpt-6-luna</code>, <code>gpt-6-sol</code></span></div>
         <div class="mini"><b>GPT-5.6 · GPT-5.5</b><span><code>gpt-5.6-sol</code>, <code>-terra</code>, <code>-luna</code>; <code>gpt-5.5</code></span></div>
         <div class="mini"><b>GPT-5.4 and earlier 5.x</b><span>5.4 (<code>mini</code>, <code>nano</code>, <code>pro</code>), 5.3 and 5.2 <code>codex</code>, 5.1, and the original GPT-5 series</span></div>
         <div class="mini"><b>Chat-latest <span class="tag prev">Preview</span></b><span><code>gpt-chat-latest</code> with dated preview versions</span></div>
@@ -688,7 +781,7 @@ client.projects.begin_create(
           <tr><td><b>Deployment types</b></td><td>Global Standard and Data Zone Standard (US)</td><td>Global Standard only</td></tr>
           <tr><td><b>Data residency</b></td><td>At rest in your Azure geography; processing scoped to global or data zone</td><td>May be processed outside the selected Azure region</td></tr>
           <tr><td><b>APIs</b></td><td>Messages, token counting</td><td>Adds <code>/files</code> and <code>/skills</code> and more capabilities</td></tr>
-          <tr><td><b>Models</b></td><td>Opus 5.5 (and Fast), Opus 5, Opus 4.8, Sonnet 5 and 5.5, Haiku 5.5 and 4.5</td><td>Those plus <b>Fable</b> (preview) and <b>Mythos</b> (gated research preview) and older versions</td></tr>
+          <tr><td><b>Models</b></td><td>Opus 5.5 (and Fast), Opus 5, Opus 4.8, Sonnet 5 and 5.5, Haiku 5.5 and 4.5</td><td>Those plus <b>Fable</b> 5, 5.1 and 5.2 including a <b>fast</b> variant (all preview) and <b>Mythos</b> (gated research preview), and older versions</td></tr>
         </tbody></table></div>
       <ul class="tight">
         <li>Current Claude models list a <b>1M token context window</b> and up to <b>128K output</b>, with <b>adaptive thinking</b> and an <b>effort</b> parameter.</li>
@@ -775,7 +868,7 @@ client.projects.begin_create(
   </div>
 
   <div class="tabs">
-    <div class="tablist" role="tablist"><button>Portal steps</button><button>Code</button><button>Voice &amp; workflows</button><button>Endpoint &amp; versions</button><button>Best practices</button></div>
+    <div class="tablist" role="tablist"><button>Portal steps</button><button>Code</button><button>Voice, A2A &amp; routines</button><button>Endpoint &amp; versions</button><button>Best practices</button></div>
 
     <div class="tabpanel">
       <ol class="steps">
@@ -819,9 +912,9 @@ print(reply.output_text)</pre></div>
     <div class="tabpanel">
       <div class="grid g2">
         <div class="card"><h4>Voice-based prompt agents</h4><p>Real-time spoken experiences. Configure the model, instructions, audio settings, an optional greeting and tools; connect through <b>Voice Live</b>. Foundry manages lifecycle and voice orchestration. Telephony channels, image input in a turn, sub-agents and voice-specific optimization are documented.</p></div>
-        <div class="card"><h4>Workflows <span class="tag prev">Preview</span></h4><p>Orchestrate several agents and steps when one task spans more than one agent. If a single agent with tools can finish the job, keep it simple. Declarative workflows can also be used and migrated in VS Code.</p></div>
+        <div class="card"><h4>Workflows <span class="tag prev">Preview</span> <span class="tag prev">Retiring Dec 1, 2026</span></h4><p>The visual workflow builder orchestrates agents with branching, variables and human-in-the-loop steps. <b>Foundry is retiring workflows on December 1, 2026.</b> For new orchestration use Microsoft Agent Framework (code-based, in hosted agents), and follow the migration guide for existing workflows.</p></div>
         <div class="card"><h4>Agent-to-agent (A2A)</h4><p>Agents can delegate to other agents. A2A v1.0 is generally available; v0.3 is preview. You can enable incoming A2A on a Foundry agent so other agents can call it.</p></div>
-        <div class="card"><h4>Routines <span class="tag prev">Preview</span></h4><p>Trigger agent work from schedules and events rather than only from user messages.</p></div>
+        <div class="card"><h4>Routines <span class="tag ga">GA</span></h4><p>Run an agent automatically when a trigger fires: a one-time timer, a recurring schedule, or an event such as a GitHub issue opening or a message posted in a Teams channel. One trigger, one action: the action invokes a prompt or hosted agent, by default under the agent's identity. Run history links to the response and trace. For branching or multiple agents, orchestrate in code instead.</p></div>
       </div>
     </div>
 
@@ -847,7 +940,7 @@ print(reply.output_text)</pre></div>
       <ul class="tight">
         <li>Keep instructions short, concrete and verifiable. Put long reference content in a knowledge source, not in the prompt.</li>
         <li>Describe <b>when</b> to use each tool and what its parameters mean; vague tool descriptions are a common cause of wrong tool calls.</li>
-        <li>Prefer one agent with the right tools over a multi-agent workflow until you need orchestration.</li>
+        <li>Prefer one agent with the right tools over a multi-agent design until you need orchestration, and plan that orchestration in code rather than the retiring workflow builder.</li>
         <li>Build an evaluation dataset early so every change is measured, not anecdotal.</li>
         <li>Let the <b>agent optimizer</b> propose better instructions and tool descriptions against your dataset (next sections).</li>
       </ul>
@@ -860,7 +953,8 @@ print(reply.output_text)</pre></div>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/runtime-components" target="_blank" rel="noopener">Agents, conversations, responses</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-agent" target="_blank" rel="noopener">Configure an agent</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/quickstarts/prompt-voice-agent" target="_blank" rel="noopener">Voice agent quickstart</a>
-    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/workflow" target="_blank" rel="noopener">Workflows</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/workflow" target="_blank" rel="noopener">Workflows (retiring Dec 1, 2026)</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/routines" target="_blank" rel="noopener">Routines</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/agent-to-agent" target="_blank" rel="noopener">A2A</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/development-lifecycle" target="_blank" rel="noopener">Agent development lifecycle</a>
   </div>
@@ -929,7 +1023,7 @@ print(reply.output_text)</pre></div>
     <p class="lede">Foundry IQ lets you create a configurable, multi-source <b>knowledge base</b> that gives agents grounded, permission-aware answers from your organization's data. Multiple agents can share the same knowledge base.</p>
   </div>
 
-  <div class="callout warn"><div><b>GA vs preview.</b> Some Foundry IQ features are generally available while others remain in preview, depending on the Search Service REST API version you use. The Foundry and Azure portals provide preview access to all agentic retrieval features. Check the migration guidance on the Foundry IQ page.</div></div>
+  <div class="callout warn"><div><b>Partial GA.</b> Foundry IQ is <b>generally available at the API level</b>, while <b>portal access remains preview</b>. Availability also depends on the Search Service REST API version you use. The Foundry and Azure portals provide preview access to all agentic retrieval features. Check the migration guidance on the Foundry IQ page for what is GA and what remains in preview.</div></div>
 
   <div class="diagram">
     <svg viewBox="0 0 1000 340" role="img" aria-label="Agentic retrieval pipeline">
@@ -1081,10 +1175,12 @@ print(reply.output_text)</pre></div>
 
 <section class="sec" id="optimize" data-nav="Optimize instructions" data-group="Agents" data-c="amber">
   <div class="sec-head">
-    <span class="eyebrow">10 · Improve automatically</span>
+    <span class="eyebrow">10 · Improve automatically <span class="tag prev">Limited preview</span></span>
     <h2>Agent optimizer: better instructions, measured</h2>
     <p class="lede">Prompt engineering is a slow, subjective loop: write, test, find weaknesses, rewrite. The agent optimizer automates it with an evaluation-driven cycle that improves instructions, tool descriptions, skills and model choice against your own dataset.</p>
   </div>
+
+  <div class="callout warn"><div><b>Limited preview.</b> The agent optimizer is listed as <b>limited preview</b> in the Foundry readiness table, so confirm access and status before you promise it to a customer.</div></div>
 
   <div class="diagram">
     <svg viewBox="0 0 1000 330" role="img" aria-label="Optimizer loop: baseline, generate candidates, evaluate, rank, apply">
@@ -1255,6 +1351,7 @@ azd deploy</pre></div>
         <li>Route new MCP tools through an <b>AI gateway</b> <span class="tag prev">Preview</span> to enforce authentication, rate limits, IP restrictions and audit logging without changing the MCP server or agent code.</li>
         <li>Apply <b>guardrails</b> to tool calls and tool responses at the toolbox.</li>
         <li>Version toolboxes and promote a new default only after testing.</li>
+        <li><b>Network isolation:</b> a toolbox is a logical container and deploys no networking of its own; the hosting project's networking governs all access. Behind a private link project, agents reach the toolbox MCP endpoint through the project's private endpoint, while each downstream tool's traffic depends on where that service is hosted (some need public or backbone connectivity).</li>
       </ul>
     </div>
   </div>
@@ -1270,6 +1367,7 @@ azd deploy</pre></div>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/tool-authentication" target="_blank" rel="noopener">Tool identity and authentication</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/governance" target="_blank" rel="noopener">Govern MCP tools</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/tool-search" target="_blank" rel="noopener">Tool search</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/toolbox-network-isolation" target="_blank" rel="noopener">Toolbox network isolation</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/how-to/connections-add" target="_blank" rel="noopener">Create a connection</a>
   </div>
 </section>
@@ -1412,7 +1510,7 @@ azd deploy</pre></div>
 
   <h3>Compute and runtime, explained</h3>
   <div class="tabs">
-    <div class="tablist" role="tablist"><button>Compute sizes</button><button>Session lifecycle</button><button>Protocols</button><button>Identity &amp; security</button><button>Deploy &amp; operate</button><button>Limits, regions &amp; price</button></div>
+    <div class="tablist" role="tablist"><button>Compute sizes</button><button>Session lifecycle</button><button>Protocols</button><button>Identity &amp; security</button><button>Deploy &amp; operate</button><button>Limits, regions &amp; price</button><button>Long-running, registry &amp; autopilots</button></div>
 
     <div class="tabpanel">
       <div class="grid g3">
@@ -1496,6 +1594,26 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
         <li><b>Third-party risk:</b> third-party servers, code and non-Azure-direct models are used at your own risk and you own responsible AI mitigations.</li>
       </ul>
     </div>
+
+    <div class="tabpanel">
+      <h4>Long-running agents <span class="tag prev">Preview</span></h4>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Capability</th><th>What it gives you</th><th>What it does not give you</th></tr></thead>
+        <tbody>
+          <tr><td><b>Background execution</b></td><td>Work continues without holding the HTTP connection open; clients poll or reconnect.</td><td>Recovery after the owning process stops.</td></tr>
+          <tr><td><b>Resilient execution</b></td><td>Durable work identity, persisted input, lease-based process-loss detection and handler reentry after a crash, restart or redeployment.</td><td>Automatic preservation of every intermediate state or side effect. Recovery reenters the handler from its beginning, so your code uses durable checkpoints and idempotency keys.</td></tr>
+          <tr><td><b>Stream replay</b></td><td>Retained events a reconnecting client can receive from a cursor.</td><td>A checkpoint of the agent's internal state.</td></tr>
+        </tbody></table></div>
+      <ul class="tight">
+        <li><b>Steering:</b> redirect an agent that is still working. A new input queues behind the active turn and the running handler winds down cooperatively, so there is no rejected turn and no two turns racing.</li>
+        <li><b>Human in the loop:</b> a multi-turn chain can suspend indefinitely to wait for an approval, an answer or missing input, then resume the same handler under the same task ID.</li>
+        <li>For Responses, full crash recovery applies only to stored background responses when the server opts in. Foreground responses stay tied to the client connection.</li>
+      </ul>
+      <h4 style="margin-top:16px">Bring your own registry</h4>
+      <p>Besides Azure Container Registry (including a private ACR for projects created after June 25, 2026), a hosted agent can pull its image from an <b>authenticated registry outside Azure</b>, such as JFrog Artifactory or a self-hosted Docker Distribution registry. The pull uses <b>OpenID Connect token exchange</b> between a Microsoft Entra application and the project's managed identity, so the registry issues short-lived credentials and no password is stored.</p>
+      <h4 style="margin-top:16px">Autopilots</h4>
+      <p>An <b>autopilot</b> is an agent that also has an <b>Entra agent user account</b>, giving it its own mailbox, calendar, OneDrive, Teams presence and org-chart position so it can act in Microsoft 365 as itself, including in group chats and with no user present. You publish a <b>blueprint</b>, and teams create their own instances, each with its own identity, permissions and manager. <b>Only hosted agents can be published as autopilot blueprints.</b> Compare with the other two types: an <i>assistive</i> agent acts on behalf of a signed-in user, and a <i>background service</i> agent acts as itself with app-only permissions but cannot perform Microsoft 365 actions.</p>
+    </div>
   </div>
 
   <h3>Prompt agent or hosted agent?</h3>
@@ -1516,6 +1634,10 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/hosted-agent-contract" target="_blank" rel="noopener">Runtime contract</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/agent-state-store" target="_blank" rel="noopener">Durable state store</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/long-running-agent-resilience" target="_blank" rel="noopener">Long-running agent resilience</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/steer-hosted-agent" target="_blank" rel="noopener">Steer an in-flight turn</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/add-human-in-the-loop" target="_blank" rel="noopener">Human-in-the-loop approval</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/private-registry-connections" target="_blank" rel="noopener">Bring your own registry</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/autopilot-overview" target="_blank" rel="noopener">What is an autopilot?</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/author-azure-yaml" target="_blank" rel="noopener">Author azure.yaml</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/how-to/develop/framework-hosted-agents" target="_blank" rel="noopener">Host Agent Framework agents</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/how-to/develop/langchain-hosted-agents" target="_blank" rel="noopener">Host LangGraph agents</a>
@@ -1715,7 +1837,8 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
           <tr><td><b>MACC</b></td><td>CCU spend is MACC-eligible and decrements your Azure Consumption Commitment like other Marketplace consumption.</td></tr>
           <tr><td><b>Discounts</b></td><td>Applied at the token-to-CCU step through Azure Marketplace private offers; per-model rates are possible. Not a separate invoice line.</td></tr>
           <tr><td><b>Scope</b></td><td>New Claude deployments bill in CCU. Earlier deployments keep their existing per-model plan; create a new deployment to move.</td></tr>
-          <tr><td><b>Subscribe</b></td><td>From Azure Marketplace (Claude Platform on Foundry offer) or from the model catalog in the portal.</td></tr>
+          <tr><td><b>Subscribe</b></td><td>From Azure Marketplace (Claude Platform on Foundry offer) or from the model catalog in the portal. If a model exists in both hosting versions, you land on the Azure-hosted one by default.</td></tr>
+          <tr><td><b>Not supported</b></td><td>Claude cannot be used on free trial, student or credit-based subscriptions, Cloud Solution Provider (CSP) subscriptions, or enterprise accounts in South Korea.</td></tr>
         </tbody></table></div>
     </div>
 
@@ -1824,11 +1947,11 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
       <p>Traces are built from <b>spans</b> (single operations, nestable) with <b>attributes</b>, following the <b>OpenTelemetry GenAI semantic conventions</b> (development status, may change). Microsoft and Cisco Outshift contribute conventions for multi-agent workflows, integrated in Foundry, Microsoft Agent Framework, LangChain and LangGraph.</p>
       <div class="grid g3 auto">
         <div class="mini"><b>What is captured</b><span>User inputs and agent outputs, tool calls and results, token consumption, duration and latency.</span></div>
-        <div class="mini"><b>Status</b><span>Tracing is GA for prompt and hosted agents. Workflow and external agents are in preview.</span></div>
+        <div class="mini"><b>Status</b><span>Tracing is GA for prompt and hosted agents; workflow and external agents are in preview. Tracing behind a virtual network is preview, and the Monitor dashboard is preview.</span></div>
         <div class="mini"><b>Where it lives</b><span>Azure Monitor Application Insights; view in the Foundry portal (Operate › Tracing) or in Azure Monitor.</span></div>
         <div class="mini"><b>Replay and annotate</b><span>Replay agent traces; annotate with human feedback; log end-user feedback.</span></div>
-        <div class="mini"><b>Traces to datasets</b><span>Convert traces into evaluation datasets to test against real behavior.</span></div>
-        <div class="mini"><b>Protect sensitive content</b><span>Restrict access to sensitive content in traces; Entra authentication for trace ingestion.</span></div>
+        <div class="mini"><b>Traces to datasets <span class="tag prev">Preview</span></b><span>Convert traces into evaluation datasets to test against real behavior.</span></div>
+        <div class="mini"><b>Protect sensitive content</b><span>Restrict access to sensitive content in traces. <b>Entra authentication for trace ingestion</b> <span class="tag prev">Preview</span> replaces key-based ingestion with identity-based access to the connected Application Insights resource.</span></div>
       </div>
     </div>
 
@@ -1886,6 +2009,8 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/how-to-monitor-agents-dashboard" target="_blank" rel="noopener">Agent Monitoring Dashboard</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/agent-insights" target="_blank" rel="noopener">Insights in Foundry</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/traces-to-dataset" target="_blank" rel="noopener">Traces to datasets</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/trace-ingestion-entra-authentication" target="_blank" rel="noopener">Entra authentication for trace ingestion</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/agent-365-integration" target="_blank" rel="noopener">Agent 365 integration</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/control-plane/monitoring-across-fleet" target="_blank" rel="noopener">Monitor fleet health</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/control-plane/register-custom-agent" target="_blank" rel="noopener">Register custom agents</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/monitor-models" target="_blank" rel="noopener">Monitor model deployments</a>
@@ -2079,6 +2204,8 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
     </div>
   </div>
 
+  <div class="callout"><div><b>Guardrails are not abuse monitoring.</b> Guardrails act in real time on each prompt and completion and are configurable by you. <b>Abuse monitoring</b> looks for recurring patterns across your usage and is run by Microsoft (for models sold by Azure) or by the provider (for partner models such as Claude). The data privacy section explains how each handles your data.</div></div>
+
   <div class="refs"><span>Learn more</span>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/guardrails/guardrails-overview" target="_blank" rel="noopener">Guardrails overview</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/guardrails/intervention-points" target="_blank" rel="noopener">Intervention points</a>
@@ -2091,6 +2218,202 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/content-filter-groundedness" target="_blank" rel="noopener">Groundedness detection</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/guardrails/third-party-integrations" target="_blank" rel="noopener">Third-party integrations</a>
     <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/control-plane/quickstart-create-guardrail-policy" target="_blank" rel="noopener">Apply a guardrail policy</a>
+  </div>
+</section>
+
+<section class="sec" id="privacy" data-nav="Data privacy & abuse monitoring" data-group="Govern" data-c="cyan">
+  <div class="sec-head">
+    <span class="eyebrow">20 · What happens to my data?</span>
+    <h2>Data privacy and abuse monitoring in Foundry</h2>
+    <p class="lede">The first question every customer asks. The honest answer depends on <b>which model you use</b>: models sold by Azure are operated by Azure under Microsoft's data protection terms, while partner and community models are Non-Microsoft Products with the provider's own terms. Abuse monitoring follows the same split.</p>
+  </div>
+
+  <div class="callout"><div><b>1P and 3P in the docs.</b> People say "first-party (1P)" and "third-party (3P)" models. The documentation uses <b>Foundry Models sold by Azure</b> (includes all Azure OpenAI models plus selected models from other providers) and <b>Foundry Models from partners and community</b> (for example Anthropic's Claude). This guide uses 1P and 3P as shorthand for those two.</div></div>
+
+  <div class="diagram">
+    <svg viewBox="0 0 1000 425" role="img" aria-label="Data flow for models sold by Azure compared with Claude from Anthropic">
+      <rect class="box" x="10" y="170" width="120" height="70" rx="14"/><text x="70" y="202" text-anchor="middle" font-size="14" style="font-weight:700">Your app</text><text class="t-f" x="70" y="222" text-anchor="middle" font-size="11">prompts in, answers out</text>
+      <!-- lane 1 -->
+      <rect class="zone" x="160" y="8" width="830" height="196" rx="20"/><text x="180" y="30" font-size="12" class="t-m" letter-spacing="1.4">MODELS SOLD BY AZURE (1P) · OPERATED BY AZURE · MICROSOFT DPA</text>
+      <rect class="box hi" x="180" y="46" width="190" height="78" rx="12"/><text x="275" y="72" text-anchor="middle" font-size="14" style="font-weight:700">Azure-hosted model</text><text class="t-f" x="275" y="92" text-anchor="middle" font-size="11">stateless: nothing is stored</text><text class="t-f" x="275" y="108" text-anchor="middle" font-size="11">in the model</text>
+      <rect class="box" x="385" y="46" width="190" height="78" rx="12"/><text x="480" y="72" text-anchor="middle" font-size="14" style="font-weight:700">Guardrails</text><text class="t-f" x="480" y="92" text-anchor="middle" font-size="11">run in real time on prompts</text><text class="t-f" x="480" y="108" text-anchor="middle" font-size="11">and completions; nothing stored</text>
+      <rect class="box" x="590" y="46" width="190" height="78" rx="12"/><text x="685" y="72" text-anchor="middle" font-size="14" style="font-weight:700">Stored features</text><text class="t-f" x="685" y="92" text-anchor="middle" font-size="11">Responses, files, fine-tuning</text><text class="t-f" x="685" y="108" text-anchor="middle" font-size="11">AES-256 · CMK option · deletable</text>
+      <rect class="box" x="795" y="46" width="185" height="78" rx="12" style="stroke:var(--amber)"/><text x="887" y="72" text-anchor="middle" font-size="14" style="font-weight:700">Abuse monitoring</text><text class="t-f" x="887" y="92" text-anchor="middle" font-size="11">flagged content only</text><text class="t-f" x="887" y="108" text-anchor="middle" font-size="11">per-geography data store</text>
+      <circle class="pulse" cx="887" cy="140" r="6" fill="var(--amber)"/>
+      <rect class="box" x="180" y="146" width="800" height="44" rx="10"/><text x="580" y="166" text-anchor="middle" font-size="12.5">Where it is processed depends on the deployment type: Standard (your geography) · Data Zone · Global</text><text class="t-f" x="580" y="182" text-anchor="middle" font-size="11">Data at rest stays in the geography you designate, including the abuse monitoring store</text>
+      <!-- lane 2 -->
+      <rect class="zone" x="160" y="218" width="830" height="200" rx="20" style="stroke:var(--rose);fill:color-mix(in srgb,var(--rose) 6%,transparent)"/><text x="180" y="240" font-size="12" class="t-m" letter-spacing="1.4">PARTNER MODELS (3P) · EXAMPLE: CLAUDE · NON-MICROSOFT PRODUCT</text>
+      <rect class="box hi" x="180" y="256" width="250" height="72" rx="12"/><text x="305" y="282" text-anchor="middle" font-size="13.5" style="font-weight:700">Claude · Hosted on Azure</text><text class="t-f" x="305" y="301" text-anchor="middle" font-size="11">processed on Azure infrastructure</text><text class="t-f" x="305" y="316" text-anchor="middle" font-size="11">Global or Data Zone (US)</text>
+      <rect class="box" x="180" y="340" width="250" height="68" rx="12" style="stroke:var(--amber)"/><text x="305" y="364" text-anchor="middle" font-size="13.5" style="font-weight:700">Claude · Hosted on Anthropic</text><text class="t-f" x="305" y="383" text-anchor="middle" font-size="11">may be processed outside Azure</text><text class="t-f" x="305" y="398" text-anchor="middle" font-size="11">and outside your Azure geography</text>
+      <rect class="box" x="460" y="256" width="250" height="152" rx="12"/><text x="585" y="282" text-anchor="middle" font-size="14" style="font-weight:700">Anthropic</text><text class="t-m" x="585" y="306" text-anchor="middle" font-size="12">operator and independent</text><text class="t-m" x="585" y="323" text-anchor="middle" font-size="12">data processor</text><text class="t-m" x="585" y="347" text-anchor="middle" font-size="12">Anthropic DPA and</text><text class="t-m" x="585" y="364" text-anchor="middle" font-size="12">Commercial Terms apply</text><text class="t-m" x="585" y="388" text-anchor="middle" font-size="12">Anthropic safety systems</text>
+      <rect class="box" x="740" y="256" width="240" height="152" rx="12"/><text x="860" y="282" text-anchor="middle" font-size="14" style="font-weight:700">Microsoft's role</text><text class="t-m" x="860" y="306" text-anchor="middle" font-size="12">Foundry portal, Azure infra,</text><text class="t-m" x="860" y="323" text-anchor="middle" font-size="12">billing (CCU) and support</text><text class="t-m" x="860" y="347" text-anchor="middle" font-size="12">Shares billing, usage and</text><text class="t-m" x="860" y="364" text-anchor="middle" font-size="12">contact info with Anthropic</text><text class="t-m" x="860" y="388" text-anchor="middle" font-size="12">for Marketplace operations</text>
+      <!-- flows -->
+      <path class="flow" d="M130 190 C150 150 160 90 180 85"/><path class="flow b" d="M130 222 C150 262 160 290 180 292"/><path class="flow a" d="M130 232 C150 300 160 370 180 374"/>
+      <path class="flow v" d="M370 85 L385 85"/><path class="flow v" d="M575 85 L590 85"/><path class="flow a" d="M780 85 L795 85"/>
+      <path class="flow r" d="M430 292 L460 292"/><path class="flow r" d="M430 374 C445 374 445 340 460 332"/><path class="flow g" d="M740 332 L710 332"/>
+    </svg>
+    <p class="cap">The 1P lane runs entirely on Azure under the Microsoft DPA. In the 3P lane, the provider is the operator and processor, and where your data goes depends on the hosting option you choose.</p>
+  </div>
+
+  <div class="tabs">
+    <div class="tablist" role="tablist"><button>Your data (1P)</button><button>Where it lives</button><button>Agents &amp; tools</button><button>Third-party (3P) models</button><button>Abuse monitoring · 1P</button><button>Abuse monitoring · 3P</button><button>Customer checklist</button></div>
+
+    <div class="tabpanel">
+      <p>For <b>models sold by Azure</b>, your prompts (inputs), completions (outputs), embeddings and training data:</p>
+      <div class="grid g2">
+        <div class="card glow"><ul class="tight"><li><b>Are not</b> available to other customers.</li><li><b>Are not</b> available to OpenAI or other providers of models sold by Azure.</li><li><b>Are not</b> used by those providers to improve their models or services.</li></ul></div>
+        <div class="card glow"><ul class="tight"><li><b>Are not</b> used to train any generative AI foundation models without your permission or instruction.</li><li>Customer data, prompts and completions are <b>not</b> used to improve Microsoft or third-party products without your explicit permission.</li><li>Your <b>fine-tuned models</b> are available exclusively to you.</li></ul></div>
+      </div>
+      <ul class="tight" style="margin-top:12px">
+        <li>Microsoft hosts these models in its own Azure environment. They <b>do not interact</b> with services operated by the model providers, such as ChatGPT or the OpenAI API.</li>
+        <li>The models are <b>stateless</b>: no prompts or completions are stored in the model.</li>
+        <li>The <b>Microsoft Products and Services Data Protection Addendum (DPA)</b> governs the processing.</li>
+      </ul>
+      <h4 style="margin-top:14px">What Foundry processes to provide the service</h4>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Data</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td><b>Prompts and generated content</b></td><td>Submitted prompts and what the model returns: text, images, embeddings.</td></tr>
+          <tr><td><b>Uploaded data</b></td><td>Files for fine-tuning, assistants and batch, through the Files API or a vector store.</td></tr>
+          <tr><td><b>Data for stateful entities</b></td><td>Message history and content persisted by the Responses API, Threads (Assistants, preview) and stored completions (preview).</td></tr>
+          <tr><td><b>Augmented data</b></td><td>Content retrieved from a configured data store or a URL and added to the prompt to ground the answer.</td></tr>
+          <tr><td><b>Training and validation data</b></td><td>Prompt-completion pairs you supply for fine-tuning.</td></tr>
+        </tbody></table></div>
+    </div>
+
+    <div class="tabpanel">
+      <h4>Where data is processed</h4>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Deployment type</th><th>Prompts and responses are processed…</th></tr></thead>
+        <tbody>
+          <tr><td><b>Standard</b> (regional)</td><td>Within the geography you specify, and possibly between regions inside that geography for operational reasons such as performance and capacity.</td></tr>
+          <tr><td><b>Data Zone</b></td><td>Anywhere inside the Microsoft-defined data zone. A Data Zone deployment in a US resource can process anywhere in the US; in an EU member state resource, in that or any other EU member state.</td></tr>
+          <tr><td><b>Global</b></td><td>In any geography where the model is deployed.</td></tr>
+          <tr><td><b>Batch</b></td><td>A Global deployment type: data at rest stays in the designated geography until capacity is available, then processing may occur in any geography where the model is deployed.</td></tr>
+        </tbody></table></div>
+      <div class="callout good"><div><b>At rest is always your geography.</b> For Global and Data Zone deployments, only the <i>location of processing</i> changes. Stored data, such as uploaded files and the abuse monitoring data store, stays in the geography you designated, and Azure data processing and compliance commitments still apply.</div></div>
+      <h4>What is stored, and how it is protected</h4>
+      <ul class="tight">
+        <li>Stored data lives in the Foundry resource in <b>your Azure tenant</b>, in the same geography as the resource.</li>
+        <li><b>Encrypted at rest with AES-256 by default</b>, with an option for a <b>customer-managed key</b> (some preview features may not support it). Microsoft-managed keys always provide baseline encryption.</li>
+        <li>You can <b>delete</b> stored data at any time.</li>
+        <li>For direct Responses API calls, the service manages the storage; it does not support bring-your-own storage for that state. Content in Cosmos DB or Blob Storage is encrypted, and the customer-managed key is used when configured and applicable.</li>
+        <li>Fine-tuned models are encrypted at rest when not deployed, exclusive to you, and deletable. Safety evaluations of fine-tuned models log only the assessment (deployable or not).</li>
+        <li><b>Preview features</b> may follow different privacy practices, including for abuse monitoring, under the supplemental preview terms.</li>
+      </ul>
+    </div>
+
+    <div class="tabpanel">
+      <p>Foundry Agent Service adds tools and stored state, so there are more places data can go. The key points from the agent data privacy page:</p>
+      <div class="grid g2">
+        <div class="card"><h4>Your data</h4><ul class="tight"><li>Prompts, completions and your data are not available to other customers, and not available to or used to improve models from OpenAI, Meta, Cohere or Mistral.</li><li>Stored agent data lives at rest in the resource in your tenant and geography; it can be encrypted with a customer-managed key (preview features may not support it) and deleted by you.</li><li>With <b>standard agent setup</b> you bring your own Storage, AI Search and Cosmos DB so conversation state and files stay under your control.</li></ul></div>
+        <div class="card"><h4>Tools can change the rules</h4><ul class="tight"><li>Tools that call external services follow <b>those services' terms</b>. For example, Grounding with Bing Search has its own data collection and privacy terms and is a Microsoft-as-controller service, <b>excluded from the Microsoft DPA</b>.</li><li>Data you pass in MCP tool headers is available only for the current run and is not persisted.</li><li>Publishing to Microsoft 365 and Teams means those services process and store some data under their own terms and residency commitments.</li></ul></div>
+      </div>
+      <div class="callout warn"><div><b>Four things developers must handle.</b>
+        <ul class="tight">
+          <li><b>Response IDs are not bound to a user.</b> Another caller with access to the same project who obtains a <code>previous_response_id</code> can continue the response and pull its history into context. Keep IDs confidential and map them server-side to users or tenants.</li>
+          <li><b>Old versions stay callable.</b> Invocation permission is per agent, not per version. To withdraw an unsafe configuration, delete the affected versions, and rotate any credential that was exposed.</li>
+          <li><b>Projects do not isolate every file.</b> Batch and fine-tuning work at the parent resource scope. For independent file access, use separate Foundry resources.</li>
+          <li><b>Hub-based projects:</b> the built-in Reader role can expose stored agent content through the legacy endpoint; grant it carefully.</li>
+        </ul></div></div>
+    </div>
+
+    <div class="tabpanel">
+      <p>Models from partners and community that are not sold by Azure are <b>Non-Microsoft Products</b> under the Product Terms. Terms, price and data handling are set by the provider and presented at deployment.</p>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th></th><th>Models sold by Azure (1P)</th><th>Claude (3P), Hosted on Azure</th><th>Claude (3P), Hosted on Anthropic</th></tr></thead>
+        <tbody>
+          <tr><td><b>Seller and operator</b></td><td>Microsoft (Azure)</td><td>Anthropic</td><td>Anthropic</td></tr>
+          <tr><td><b>Data processor</b></td><td>Microsoft, under the DPA</td><td>Anthropic, as independent data processor</td><td>Anthropic, as independent data processor</td></tr>
+          <tr><td><b>Where prompts and outputs are processed</b></td><td>Per deployment type (Standard, Data Zone, Global)</td><td>On Azure infrastructure, end to end; the privacy page states they never leave Azure</td><td>On Anthropic infrastructure, possibly outside Azure and your geography</td></tr>
+          <tr><td><b>Data at rest and residency</b></td><td>Your designated geography</td><td>Your Azure geography; processing scoped to Global or Data Zone (US)</td><td>May be processed outside Azure</td></tr>
+          <tr><td><b>Governing terms</b></td><td>Microsoft DPA and Product Terms</td><td>Anthropic DPA and Commercial Terms</td><td>Anthropic DPA and Commercial Terms</td></tr>
+          <tr><td><b>SLA</b></td><td>Azure SLAs</td><td>Anthropic, as operator, provides any SLA</td><td>Anthropic, as operator, provides any SLA</td></tr>
+          <tr><td><b>Support</b></td><td>Microsoft Support</td><td>Microsoft Support</td><td>Microsoft Support</td></tr>
+        </tbody></table></div>
+      <ul class="tight">
+        <li>Microsoft still provides the Foundry experience, Azure infrastructure and billing, and processes that data under the DPA and Marketplace terms. Microsoft may share customer contact information, transaction details and usage information with Anthropic so Anthropic can operate and support the model.</li>
+        <li>If a Claude model is available in both versions, you land on the <b>Azure-hosted</b> version by default.</li>
+        <li><b>Fireworks on Foundry</b> is different again: a Microsoft first-party consumption service where Fireworks AI is a <b>Microsoft subprocessor</b>. Microsoft's Product Terms and DPA govern it (with documented exceptions: no SOC 1 Type 2, PCI, HITRUST or FedRAMP), model providers do not get access to customer data, and data does travel to Fireworks' GPUs. Data at rest stays in the region you pick (US only today), and you opt in through the portal.</li>
+        <li>For any other partner model, read the model card and provider terms; you are responsible for the data that flows to a Non-Microsoft Product and for reviewing its retention and location practices.</li>
+      </ul>
+    </div>
+
+    <div class="tabpanel">
+      <p>Abuse monitoring for models sold by Azure detects recurring content or behavior that suggests use in a way that might violate the Code of Conduct. It has four parts:</p>
+      <ol class="steps">
+        <li><b>Content classification</b><span>Classifier models detect harmful text and images in prompts and completions, assign severity levels, and feed signals into pattern detection.</span></li>
+        <li><b>Abuse pattern capture</b><span>Algorithms and heuristics score indicators across your usage: how often and how severe harmful content is, and whether it looks intentional (for example recurring jailbreak attempts).</span></li>
+        <li><b>Review and decision</b><span>Flagged content or suspicious patterns may be sampled for review. <b>By default the review is automated</b>, using AI models such as LLMs, and prompts and completions reviewed this way are not stored by the system or used to train models. If automated review is not confident enough, or is unavailable, <b>authorized Microsoft employees may review</b> the flagged content.</span></li>
+        <li><b>Notification and action</b><span>When abuse is confirmed you are told by email. Except for severe or recurring abuse, you typically get a chance to explain or fix it. Failing to address it, or severe or recurring abuse, may lead to suspension or termination of access.</span></li>
+      </ol>
+      <div class="grid g2">
+        <div class="card"><h4>Who can see flagged content</h4><ul class="tight"><li>Only data already flagged, or part of a flagged pattern, can reach a human reviewer.</li><li>Reviewers are authorized Microsoft employees using <b>point-wise queries by request ID</b>, <b>Secure Access Workstations</b> and <b>just-in-time approval</b> from team managers.</li><li>For models deployed in the European Economic Area, those employees are located in the EEA.</li></ul></div>
+        <div class="card"><h4>Where it is kept</h4><ul class="tight"><li>The abuse monitoring data store is <b>logically separated per customer resource</b> (each request carries the Foundry resource ID).</li><li>A separate store exists in each geography where the model is available, and your content is stored in the geography of your resource, inside the service boundary.</li></ul></div>
+      </div>
+      <h4 style="margin-top:14px">Modified abuse monitoring</h4>
+      <p>If you process highly sensitive data, or cannot permit Microsoft to store and human-review prompts and completions, you can apply for <b>modified abuse monitoring</b> through the Limited Access process (some advanced models have stricter criteria). If approved, <b>the data storage and human review are not performed</b>. Automated review can still happen, and severe or recurring abuse may still lead to limits on access. Detection may be less accurate, so be ready to respond to a notification.</p>
+      <div class="code" data-lang="azure cli"><pre># Verify that data storage for abuse monitoring is off (after approval)
+az cognitiveservices account show -n &lt;resource-name&gt; -g &lt;resource-group&gt;
+# Look for the capability:  { "name": "ContentLogging", "value": "false" }
+# The attribute appears ONLY when storage is off; if it is absent, storage is on.</pre></div>
+    </div>
+
+    <div class="tabpanel">
+      <p>Abuse monitoring for third-party models is run by the provider, not by Microsoft's abuse monitoring system described in the previous tab. For <b>Claude</b>, the docs say:</p>
+      <ul class="tight">
+        <li><b>Anthropic safety systems and safeguards are active in both hosting options</b>, supported by Microsoft. Harmful content screening, safety review and Anthropic-specific processing are described in Anthropic's documentation and in the terms shown at deployment.</li>
+        <li><b>Hosted on Azure:</b> automatic safeguards flag content that might be sent to <b>Anthropic Trust &amp; Safety</b> for review, and Anthropic personnel review customer content on an <b>exceptions-only</b> basis to investigate potential safety violations, subject to Anthropic's terms.</li>
+        <li><b>Data retention</b> is governed by Anthropic's Data Processing Addendum and Commercial Terms of Service, not by the Microsoft abuse monitoring data store.</li>
+        <li>Your use must comply with <b>Anthropic's Acceptable Use Policy</b>.</li>
+        <li><b>Foundry does not provide built-in content filtering for Claude at deployment time.</b> Configure Azure AI Content Safety during inference if you need Foundry-style guardrails.</li>
+      </ul>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Question</th><th>Models sold by Azure (1P)</th><th>Partner models (3P), Claude as the example</th></tr></thead>
+        <tbody>
+          <tr><td><b>Who monitors for abuse?</b></td><td>Microsoft's abuse monitoring system</td><td>Anthropic, with Microsoft support</td></tr>
+          <tr><td><b>Default review</b></td><td>Automated, using AI models; human review only if needed</td><td>Automatic safeguards; Anthropic review on an exceptions-only basis</td></tr>
+          <tr><td><b>Can I opt out of human review?</b></td><td>Yes, by applying for modified abuse monitoring (Limited Access)</td><td>Governed by Anthropic's terms; the Foundry docs do not describe an opt-out, so ask your Microsoft or Anthropic account team</td></tr>
+          <tr><td><b>Where is flagged content stored?</b></td><td>Per-geography store in your resource's geography</td><td>Per Anthropic's terms and the hosting option</td></tr>
+          <tr><td><b>Built-in content filtering?</b></td><td>Yes, guardrails (DefaultV2) on by default</td><td>Not at deployment time for Claude; add Content Safety</td></tr>
+          <tr><td><b>How do I check?</b></td><td><code>ContentLogging</code> capability on the resource</td><td>Anthropic's documentation and the terms shown at deployment</td></tr>
+        </tbody></table></div>
+      <div class="callout"><div>The docs do not publish a per-model abuse-monitoring description for every partner model. For any model outside Claude and Fireworks, check the model card and the provider's terms, and ask your Microsoft account team to confirm in writing.</div></div>
+    </div>
+
+    <div class="tabpanel">
+      <ol class="steps">
+        <li><b>Match the deployment type to your residency need</b><span>Standard for a single geography, Data Zone for US or EU, Global for broadest capacity. Remember data at rest stays in your geography either way.</span></li>
+        <li><b>Prefer Microsoft Entra ID and RBAC over keys</b><span>Agents, evaluations and datasets require Entra ID anyway. Use customer-managed keys where policy requires them.</span></li>
+        <li><b>Decide what you store</b><span>Responses API history, files, stored completions and traces all persist data. Set retention and delete what you do not need. Trace content can be restricted.</span></li>
+        <li><b>Use standard agent setup when data must stay in your resources</b><span>Bring your own Storage, AI Search and Cosmos DB, and use separate Foundry resources where resource-scoped capabilities need isolation.</span></li>
+        <li><b>Protect response IDs and prune agent versions</b><span>Treat IDs as sensitive, and delete versions that held unsafe configurations.</span></li>
+        <li><b>For highly sensitive workloads, consider modified abuse monitoring</b><span>Check eligibility under Limited Access, and verify <code>ContentLogging</code> is false after approval.</span></li>
+        <li><b>Choose Claude hosting deliberately</b><span>Hosted on Azure if you need residency in a geography or Data Zone (US). Add Content Safety because there is no built-in deployment-time filtering.</span></li>
+        <li><b>Review every non-Microsoft term</b><span>Marketplace offers, partner models, third-party MCP servers and Bing grounding each carry their own terms. Record the decision.</span></li>
+        <li><b>Layer on Microsoft Purview and Defender</b><span>Auditing, sensitivity classification and DSPM for AI give visibility into prompt and response data; Defender detects jailbreak and input attacks.</span></li>
+        <li><b>Disable preview features in production</b><span>Preview features may follow different privacy practices.</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="refs"><span>Learn more</span>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/openai/data-privacy" target="_blank" rel="noopener">Data, privacy and security: models sold by Azure</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/abuse-monitoring" target="_blank" rel="noopener">Abuse monitoring</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/openai/limited-access" target="_blank" rel="noopener">Limited access and modified abuse monitoring</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/claude-models/data-privacy" target="_blank" rel="noopener">Data privacy for Claude models</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/claude-models-hosting-comparison" target="_blank" rel="noopener">Azure-hosted vs Anthropic-hosted Claude</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/agents/data-privacy-security" target="_blank" rel="noopener">Data privacy for Agent Service</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/how-to/fireworks/privacy-compliance-faq" target="_blank" rel="noopener">Fireworks on Foundry privacy FAQ</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/agents/transparency-note" target="_blank" rel="noopener">Agent Service transparency note</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/openai/customer-copyright-commitment" target="_blank" rel="noopener">Customer Copyright Commitment</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/concepts/customer-managed-keys" target="_blank" rel="noopener">Customer-managed keys</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/guardrails/default-safety-policies" target="_blank" rel="noopener">Default safety policies</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/responsible-use-of-ai-overview" target="_blank" rel="noopener">Responsible AI overview</a>
+    <a class="ref" href="https://learn.microsoft.com/en-us/legal/ai-code-of-conduct" target="_blank" rel="noopener">Code of conduct</a>
+    <a class="ref" href="https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA" target="_blank" rel="noopener">Data Protection Addendum</a>
+    <a class="ref" href="https://www.microsoft.com/en-us/trust-center" target="_blank" rel="noopener">Microsoft Trust Center</a>
+    <a class="ref" href="https://azure.microsoft.com/explore/global-infrastructure/data-residency/" target="_blank" rel="noopener">Data residency in Azure</a>
   </div>
 </section>
 
@@ -2121,7 +2444,7 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
     <div class="tabpanel">
       <div class="grid g2">
         <div class="card"><h4>People</h4><p>Microsoft Entra ID and Azure RBAC with Foundry roles that separate control plane from data plane (User, Project Manager, Account Owner, Owner). Prefer <b>keyless</b> authentication. Elevated-role tasks and the option to disable preview features are documented for administrators.</p></div>
-        <div class="card"><h4>Agents</h4><p>Each agent gets a <b>Microsoft Entra agent identity</b> under an <b>agent identity blueprint</b>. It starts with <b>no permissions</b>; you grant least-privilege RBAC on the target services. Agents authenticate to tools without secrets in prompts or code.</p></div>
+        <div class="card"><h4>Agents</h4><p>Each agent gets a <b>Microsoft Entra agent identity</b> under an <b>agent identity blueprint</b>. It starts with <b>no permissions</b>; you grant least-privilege RBAC on the target services. Agents authenticate to tools without secrets in prompts or code. <b>Autopilots</b> additionally get an agent user account so they can act in Microsoft 365 as themselves.</p></div>
         <div class="card"><h4>Callers</h4><p><b>Agent endpoint authorization</b> controls who can call an agent (Azure RBAC, agent blueprint, Bot Service schemes). API keys are not supported for agent endpoints.</p></div>
         <div class="card"><h4>Users, delegated</h4><p><b>User delegation for tools</b> uses OAuth on-behalf-of and Microsoft Entra consent so tools act with the user's permissions, not a broad service identity.</p></div>
       </div>
@@ -2173,13 +2496,14 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
         <li><b>Manage agents at scale</b> across supported platforms: filter, drill into evaluation and monitoring, act on recommendations.</li>
         <li><b>Register custom agents</b> from other platforms into the control plane registry (preview) and route them through the AI gateway.</li>
         <li><b>Agent availability for administrators:</b> use <b>Agent 365</b> and Microsoft Entra governance actions, with Azure infrastructure intervention as the emergency path.</li>
+        <li><b>Microsoft Agent 365</b> is Microsoft's enterprise control plane for agents, built on <b>Entra Agent ID</b>. Its five pillars are a <b>registry</b> (including agents built in Foundry and Copilot Studio, registered agents and shadow agents), <b>access control</b> (RBAC, ABAC and Conditional Access), <b>visualization</b>, <b>interoperability</b> (Microsoft 365 apps and Work IQ) and <b>security</b> (Defender and Purview). Entra Agent ID enables access reviews, lifecycle policies and owner attestation.</li>
         <li><b>Schedule red-team scans and drift monitoring</b> for ongoing agent testing.</li>
       </ul>
     </div>
 
     <div class="tabpanel">
       <ul class="tight">
-        <li><b>Transparency notes</b> for Azure OpenAI and for Foundry Agent Service; data, privacy and security pages for models and agents; a code of conduct; abuse monitoring; content provenance and text watermarking for supported models.</li>
+        <li><b>Transparency notes</b> for Azure OpenAI and for Foundry Agent Service; data, privacy and security pages for models and agents (see the data privacy section); a code of conduct; abuse monitoring; content provenance (C2PA and text watermarking for supported models).</li>
         <li><b>High availability and disaster recovery</b> guidance, including recovery from platform outage and from resource and data loss, and a Foundry security baseline.</li>
         <li><b>Model lifecycle:</b> track retirement dates so a governed fleet does not depend on a retired model.</li>
       </ul>
@@ -2206,10 +2530,12 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
 
 <section class="sec" id="gateway" data-nav="AI Gateway" data-group="Govern" data-c="violet">
   <div class="sec-head">
-    <span class="eyebrow">20 · Token governance</span>
+    <span class="eyebrow">20 · Token governance <span class="tag prev">Preview</span></span>
     <h2>AI Gateway: tiers, limits and every capability</h2>
     <p class="lede">AI Gateway puts <b>Azure API Management (APIM)</b> between clients and your Foundry models and tools. It gives you per-project token limits and quotas, centralized policy, observability and a governed entry point for MCP tools and custom agents.</p>
   </div>
+
+  <div class="callout warn"><div><b>Preview.</b> The AI Gateway experience (Manage › AI Gateway) is listed as <b>preview</b> in the Foundry readiness table, and governing MCP tools through it is a separate preview. API Management is itself a generally available service, but check the status of each capability on its page (for example, the unified model API is marked preview).</div></div>
 
   <div class="diagram">
     <svg viewBox="0 0 1000 380" role="img" aria-label="Clients and agents flow through the AI Gateway to model deployments">
@@ -2358,7 +2684,7 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
       <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/quickstarts/quickstarts" target="_blank" rel="noopener">Quickstarts</a></li>
       <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/tutorials/developer-journey-idea-to-prototype" target="_blank" rel="noopener">Tutorial: idea to prototype</a></li>
       <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/whats-new-foundry" target="_blank" rel="noopener">What's new</a></li>
-      <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/concepts/general-availability" target="_blank" rel="noopener">General availability overview</a></li>
+      <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/concepts/general-availability" target="_blank" rel="noopener">General availability and feature readiness</a></li>
     </ul></div>
     <div class="card"><h4>Build agents</h4><ul class="tight">
       <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/agents/overview" target="_blank" rel="noopener">Agent Service overview</a></li>
@@ -2383,6 +2709,10 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
       <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/concepts/observability" target="_blank" rel="noopener">Observability</a></li>
       <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-overview" target="_blank" rel="noopener">Evaluation</a></li>
       <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/guardrails/guardrails-overview" target="_blank" rel="noopener">Guardrails and controls</a></li>
+      <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/openai/data-privacy" target="_blank" rel="noopener">Data privacy and security (models sold by Azure)</a></li>
+      <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/abuse-monitoring" target="_blank" rel="noopener">Abuse monitoring</a></li>
+      <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/claude-models/data-privacy" target="_blank" rel="noopener">Data privacy for Claude</a></li>
+      <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/agents/data-privacy-security" target="_blank" rel="noopener">Data privacy for Agent Service</a></li>
       <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/control-plane/overview" target="_blank" rel="noopener">Foundry Control Plane</a></li>
       <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/configuration/enable-ai-api-management-gateway-portal" target="_blank" rel="noopener">AI Gateway</a></li>
       <li><a class="ref" href="https://learn.microsoft.com/en-us/azure/foundry/concepts/rbac-foundry" target="_blank" rel="noopener">Role-based access control</a></li>
@@ -2407,7 +2737,7 @@ A2A         {project_endpoint}/agents/{name}/endpoint/protocols/a2a</pre></div>
   </main>
 
   <footer class="foot">
-    <p><b>How this guide is grounded.</b> Every claim links to Microsoft Learn (learn.microsoft.com/azure/foundry). Pages were read between August and October 2026 and checked on 2026-10-25. Foundry changes quickly: items marked <span class="tag prev">Preview</span> may change, and the portal layout is updated often. Always confirm against the linked page before you present.</p>
+    <p><b>How this guide is grounded.</b> Every claim links to Microsoft Learn (learn.microsoft.com/azure/foundry). Pages were read between August and November 2026 and checked on 2026-11-11. Foundry changes quickly: items marked <span class="tag prev">Preview</span> may change, and the portal layout is updated often. Always confirm against the linked page before you present.</p>
     <p>Domain-neutral on purpose: examples use generic assistants and documents so you can reuse this for any customer.</p>
   </footer>
 </div>
@@ -2473,6 +2803,14 @@ $("#burger").addEventListener("click", () => {
   $("#burger").setAttribute("aria-expanded", String(open));
 });
 
+/* ---------- Auto-number section eyebrows so sections can be inserted without renumbering ---------- */
+sections.forEach((s, i) => {
+  const eb = $(".sec-head .eyebrow", s);
+  if (!eb) return;
+  const t = [...eb.childNodes].find(n => n.nodeType === 3);
+  if (t) t.textContent = t.textContent.replace(/^\s*\d+\s*·\s*/, String(i + 1).padStart(2, "0") + " · ");
+});
+
 /* ---------- Reveal on scroll ---------- */
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.08 });
 $$(".sec-head, .card, .diagram, .tabs, .grid > *, .portal, .spectrum, .callout, .steps, .tbl-wrap, details").forEach(e => { e.classList.add("reveal"); io.observe(e); });
@@ -2514,11 +2852,11 @@ const PORTAL = {
   ]},
   Discover: { scope: "Selected project", color: "var(--violet)", items: [
     { n: "Model catalog", w: "Browse and deploy models. Filter <b>Collections</b> to <b>Direct from Azure</b> for models sold by Azure, or browse partner and community models.", b: ["Open a model card to see capabilities, <b>Pricing</b>, and <b>Deploy</b> (including <b>Custom settings</b> for deployment type)", "More than 10,000 models from Microsoft, OpenAI, Anthropic, Meta and others"], u: ["concepts/foundry-models-overview", "Foundry Models overview"] },
-    { n: "Model benchmarks", w: "Leaderboards and side-by-side comparison to help choose a model.", b: ["Compare models on quality, cost and throughput", "Run benchmark evaluations against your own data"], u: ["concepts/model-benchmarks", "Model leaderboards"] },
+    { n: "Model benchmarks", w: "Leaderboards and side-by-side comparison to help choose a model. <span class='tag prev'>Preview</span>", b: ["Compare models on quality, cost and throughput", "Run benchmark evaluations against your own data"], u: ["concepts/model-benchmarks", "Model leaderboards"] },
   ]},
   Build: { scope: "Selected project", color: "var(--cyan)", groups: true, items: [
     { g: "Create" },
-    { n: "Agents", w: "Create and manage prompt, workflow and hosted agents. Each agent has its own tabs.", b: ["<b>Details</b>: active version, endpoint and channels", "<b>Monitor</b>: token usage, latency, run success, evaluation and red-team results <span class='tag prev'>Preview</span>", "<b>Optimize</b>: agent optimizer wizard", "<b>Publish</b>: Teams and Microsoft Copilot, or a stable endpoint"], u: ["agents/overview", "Agent Service overview"] },
+    { n: "Agents", w: "Create and manage prompt, workflow and hosted agents. Each agent has its own tabs.", b: ["<b>Details</b>: active version, endpoint and channels", "<b>Monitor</b>: token usage, latency, run success, evaluation and red-team results <span class='tag prev'>Preview</span>", "<b>Optimize</b>: agent optimizer wizard <span class='tag prev'>Limited preview</span>", "<b>Publish</b>: Teams and Microsoft Copilot (GA), or a stable endpoint"], u: ["agents/overview", "Agent Service overview"] },
     { n: "Models", w: "Your deployments, plus the playgrounds to try them.", b: ["Select a deployed model to open its <b>playground</b>", "Compare outputs, tune parameters, add a system message"], u: ["concepts/concept-playgrounds", "Playgrounds"] },
     { n: "Services", w: "Foundry Tools: Speech, Vision, Language, Content Safety, Content Understanding and others.", b: ["Pre-built AI services you can also expose as agent tools"], u: ["agents/how-to/tools/azure-ai-speech", "Azure Speech tool"] },
     { n: "Tools", w: "The tool catalog and custom tools your agents can call.", b: ["Catalog of connectors and MCP servers (1,000+ connectors)", "<b>Custom &gt; Model Context Protocol</b> for your own MCP server", "Group tools into a <b>Toolbox</b>"], u: ["agents/concepts/toolbox-overview", "Toolbox"] },
@@ -2530,15 +2868,15 @@ const PORTAL = {
     { n: "Evaluations", w: "Create, run and compare evaluations on models and agents.", b: ["Built-in quality, safety, RAG and agent evaluators", "View and analyze results; cluster analysis"], u: ["concepts/evaluation-overview", "Evaluation overview"] },
     { n: "Fine-tune", w: "Customize a model on your own data when prompting and retrieval are not enough.", b: ["Charged for training, hosting (hourly, even if idle) and inference", "Deploy fine-tuned models, then evaluate safety"], u: ["fine-tuning/overview", "Fine-tuning overview"] },
   ]},
-  Operate: { scope: "All projects in the subscription", color: "var(--amber)", items: [
+  Operate: { scope: "All projects in the subscription (control plane, preview)", color: "var(--amber)", items: [
     { n: "Overview", w: "Fleet health at a glance: active agents, cost trends, run completion, prevented behaviors.", b: ["Drill into anomalies and cost spikes", "Trend-based health scores and alert summaries"], u: ["control-plane/overview", "Foundry Control Plane"] },
     { n: "Assets", w: "One searchable table of every agent, model and tool across projects.", b: ["Filter by version, tags, health score, cost, alerts, token usage", "Drill into Evaluation or Monitoring; see inline recommendations", "Observe and modify guardrails"], u: ["control-plane/how-to-manage-agents", "Manage agents at scale"] },
     { n: "Compliance", w: "Define, apply and monitor guardrail policies; integrates Azure Policy, Microsoft Defender and Microsoft Purview.", b: ["Versioned policies and assignments", "Surface non-compliant assets and bulk-remediate"], u: ["control-plane/how-to-manage-compliance-security", "Compliance and security"] },
-    { n: "Tracing", w: "Inspect traces of agent and model runs (OpenTelemetry, stored in Application Insights).", b: ["Replay traces, annotate with human feedback", "Convert traces into evaluation datasets"], u: ["observability/concepts/trace-agent-concept", "Tracing concepts"] },
+    { n: "Tracing", w: "Inspect traces of agent and model runs (OpenTelemetry, stored in Application Insights). GA for prompt and hosted agents.", b: ["Replay traces, annotate with human feedback", "Convert traces into evaluation datasets <span class='tag prev'>Preview</span>"], u: ["observability/concepts/trace-agent-concept", "Tracing concepts"] },
   ]},
   Manage: { scope: "Selected project and its parent resource", color: "var(--green)", items: [
     { n: "Quota", w: "Which deployments consume how much quota. Toggle <b>Show all</b> to see available quota and regions before you deploy.", b: ["Request more quota from the quota page"], u: ["how-to/quota", "Manage quotas"] },
-    { n: "AI Gateway", w: "Enable Azure API Management as the AI Gateway for the resource; set token limits per project.", b: ["<b>Add AI Gateway</b>, then <b>Token management</b> &gt; <b>+ Set limit</b>", "New projects have the gateway enabled by default; add existing projects manually"], u: ["configuration/enable-ai-api-management-gateway-portal", "Configure AI Gateway"] },
+    { n: "AI Gateway", w: "Enable Azure API Management as the AI Gateway for the resource; set token limits per project. <span class='tag prev'>Preview</span>", b: ["<b>Add AI Gateway</b>, then <b>Token management</b> &gt; <b>+ Set limit</b>", "New projects have the gateway enabled by default; add existing projects manually"], u: ["configuration/enable-ai-api-management-gateway-portal", "Configure AI Gateway"] },
     { n: "Project details", w: "Project configuration plus people and connections.", b: ["<b>Users</b> tab: add or remove access (Foundry roles)", "<b>Connected resources</b> tab: storage, Foundry Tools and others", "Resource ID, endpoint, subscription, location"], u: ["concepts/rbac-foundry", "Role-based access control"] },
     { n: "Resource details", w: "The parent Foundry resource and every project it contains.", b: ["Open the resource in the Azure portal", "<b>Projects</b> tab: add projects to the resource"], u: ["concepts/architecture", "Service architecture"] },
   ]},

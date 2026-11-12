@@ -1,0 +1,92 @@
+<section class="sec" id="whats-new" data-nav="What's new & readiness" data-group="Foundations" data-c="green">
+  <div class="sec-head">
+    <span class="eyebrow">02 · Fresh from the docs</span>
+    <h2>What's new, and how ready each feature is</h2>
+    <p class="lede">Foundry changes monthly. This section was re-checked against Microsoft Learn on <b>November 11, 2026</b>: recent additions from the "What's new" page and the feature readiness table from the general availability overview. Use it to decide what is safe to put in production and what to pilot.</p>
+  </div>
+
+  <div class="callout warn"><div><b>Rule of thumb for customers.</b> Preview features are provided without a service-level agreement and Microsoft does not recommend them for production workloads. Decide your policy up front, and use the documented controls to hide or block preview features in production environments.</div></div>
+
+  <h3>Recent additions worth knowing</h3>
+  <div class="grid g3 auto">
+    <div class="mini" style="--c:var(--violet)"><b>Autopilots</b><span>Agents with their own Entra agent user account (mailbox, calendar, Teams presence), built from hosted-agent blueprints, so they can work with a whole team. {{doc:agents/concepts/autopilot-overview|Overview}}</span></div>
+    <div class="mini"><b>Long-running hosted agents <span class="tag prev">Preview</span></b><span>Crash recovery, stream replay with reconnect, steering an in-flight turn, human-in-the-loop approval and a durable state store. {{doc:agents/concepts/long-running-agent-resilience|Resilience}}</span></div>
+    <div class="mini"><b>Routines <span class="tag ga">GA</span></b><span>Run a prompt or hosted agent on a timer, a schedule or an event such as a GitHub issue or a Teams channel message. {{doc:agents/concepts/routines|Routines}}</span></div>
+    <div class="mini"><b>Bring your own registry</b><span>Hosted agents can pull from an authenticated non-Azure registry using OIDC token exchange; private ACR is supported for projects created after June 25, 2026. {{doc:agents/how-to/private-registry-connections|Guide}}</span></div>
+    <div class="mini"><b>Toolbox <span class="tag ga">GA</span></b><span>Tool search, skills and a private skill catalog are preview add-ons. New guidance on network isolation for toolboxes. {{doc:agents/how-to/tools/toolbox-network-isolation|Network isolation}}</span></div>
+    <div class="mini"><b>Foundry IQ</b><span>API-level GA with preview portal access; a knowledge base can feed a Microsoft Copilot Studio agent <span class="tag prev">Preview</span>. {{doc:agents/concepts/what-is-foundry-iq|Foundry IQ}}</span></div>
+    <div class="mini"><b>Observability</b><span>Microsoft Entra authentication for trace ingestion <span class="tag prev">Preview</span>, plus Agent 365 data collection and permissions. {{doc:observability/how-to/trace-ingestion-entra-authentication|Entra ingestion}}</span></div>
+    <div class="mini"><b>Evaluations</b><span>SDK guides for conversations, datasets, deployed interactions and synthetic data, and cloud evaluations with admin-connected models. {{doc:observability/how-to/cloud-evaluation|Cloud evaluation}}</span></div>
+    <div class="mini"><b>Models</b><span>GPT-6.1 and GPT-6 families, Claude Fable 5.2 and Mythos previews, MAI-Thinking-1 and Grok guides, Fireworks on Foundry, and a six-phase model migration guide. {{doc:foundry-models/concepts/model-migration|Migration guide}}</span></div>
+    <div class="mini"><b>Developer tools</b><span>Foundry Toolkit for VS Code, Foundry Canvas (a GitHub Copilot App extension), and the Foundry MCP Server <span class="tag prev">Preview</span>. {{doc:how-to/develop/get-started-projects-visual-studio-code|Toolkit}}</span></div>
+    <div class="mini"><b>Responsible AI</b><span>Content provenance (C2PA and text watermarking), customer-managed key guidance, and data privacy and abuse monitoring (next sections). {{doc:responsible-ai/content-safety/provenance-disclosure|Provenance}}</span></div>
+    <div class="mini"><b>Foundry Control Plane <span class="tag prev">Preview</span></b><span>Fleet inventory, compliance, quota and the AI Gateway in one place, with Agent 365 for identity-based governance. {{doc:control-plane/overview|Control plane}}</span></div>
+  </div>
+
+  <h3>Dates to watch</h3>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>Date</th><th>What</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td><b>December 1, 2026</b></td><td>Foundry retires <b>workflows</b> (the visual workflow builder).</td><td>Use Microsoft Agent Framework for new orchestration; follow the migration guide for existing workflows.</td></tr>
+      <tr><td><b>August 26, 2026</b> (passed)</td><td>Scheduled sunset of the <b>Assistants API</b> and retirement of the <code>azure-ai-inference</code> package.</td><td>Move to the Responses API, the <code>openai</code> package and <code>azure-ai-projects</code> 2.x. Confirm status in the migration guide.</td></tr>
+      <tr><td><b>June 25, 2026</b></td><td>Projects created after this date can use a private Azure Container Registry for hosted agent images.</td><td>Older projects need a registry reachable over its public endpoint.</td></tr>
+      <tr><td><b>Every model</b></td><td>Each model has a retirement date; retirement without a replacement returns HTTP 410 Gone after notice.</td><td>Track the lifecycle policy and plan migrations early.</td></tr>
+    </tbody></table></div>
+
+  <h3>Feature readiness at a glance</h3>
+  <p>From the general availability overview. Statuses describe the named portal experience; individual tools and evaluators can carry their own labels, so check the page for each one.</p>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>Area</th><th>Feature</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="6"><b>Discover</b></td><td>Model catalog, search, tools, solution templates</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Instant access models</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Model leaderboards</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Playgrounds: model, agents, images</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Video playground</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Overall portal for Foundry projects</td><td><span class="tag ga">GA</span> for defined core scenarios</td></tr>
+      <tr><td rowspan="12"><b>Build · agents</b></td><td>Agents (core), hosted agents</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Publish to Microsoft Copilot and Teams</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Routines</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Toolboxes</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Tools catalog</td><td><span class="tag ga">GA</span> (check the label on each tool)</td></tr>
+      <tr><td>Knowledge (Foundry IQ)</td><td><span class="tag prev">Partial GA</span> API-level GA, portal preview</td></tr>
+      <tr><td>Memory</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Voice Live agents</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Agent optimizer</td><td><span class="tag prev">Limited preview</span></td></tr>
+      <tr><td>Workflows</td><td><span class="tag prev">Preview</span> and <b>retiring Dec 1, 2026</b></td></tr>
+      <tr><td>A2A protocol</td><td>v1.0 <span class="tag ga">GA</span> · v0.3 <span class="tag prev">Preview</span></td></tr>
+      <tr><td>Foundry Agent Service</td><td>Agents v2 (Responses API) <span class="tag ga">GA</span>; assistants and v1 agents are not supported in the new portal</td></tr>
+      <tr><td rowspan="9"><b>Build · models and data</b></td><td>Models and deployments</td><td><span class="tag ga">GA</span> (managed compute is a preview deployment type)</td></tr>
+      <tr><td>Fine-tuning</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Data (core)</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Stored completions</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Evaluations</td><td><span class="tag ga">GA</span> (some evaluators and features are preview)</td></tr>
+      <tr><td>Red teaming</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Tracing</td><td><span class="tag ga">GA</span> for prompt and hosted agents; <span class="tag prev">Preview</span> for workflow and external agents</td></tr>
+      <tr><td>Tracing in a virtual network · traces in agent builder · traces to datasets · cluster analysis</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Monitoring</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td rowspan="3"><b>Guardrails</b></td><td>Guardrails for models</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Guardrails for agents</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Controls and intervention points</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td rowspan="3"><b>Operate</b></td><td>Overview, Assets, Compliance (the control plane)</td><td><span class="tag prev">Preview</span></td></tr>
+      <tr><td>Quota</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td>Project and resource details</td><td><span class="tag ga">GA</span></td></tr>
+      <tr><td><b>Manage</b></td><td>AI Gateway</td><td><span class="tag prev">Preview</span></td></tr>
+    </tbody></table></div>
+
+  <div class="grid g2">
+    <div class="card"><h4>Authentication</h4><p>Foundry supports API key authentication for most areas, with exceptions: <b>evaluations, the dataset tab, Content Understanding, agents and workflows require Microsoft Entra ID</b>. For governance-sensitive workloads use Entra ID with RBAC; keys do not give the same role-based granularity.</p></div>
+    <div class="card"><h4>Rollout pitfalls from the docs</h4><ul class="tight"><li>Treating preview features as production dependencies without approval.</li><li>Skipping region and model availability checks.</li><li>Assuming every GA feature works behind a virtual network (traces and workflow agents do not yet fully support network isolation).</li><li>Building new production dependencies on workflows.</li></ul></div>
+  </div>
+
+  <div class="refs"><span>Learn more</span>
+    {{doc:whats-new-foundry|What's new in Microsoft Foundry}}
+    {{doc:concepts/general-availability|General availability overview}}
+    {{doc:how-to/disable-preview-features|Disable preview features}}
+    {{doc:reference/foundry-known-issues|Known issues}}
+    {{doc:reference/region-support|Feature availability by region}}
+    {{doc:openai/concepts/model-retirements|Model lifecycle and support policy}}
+    {{doc:agents/concepts/workflow|Workflow retirement and migration}}
+    {{doc:how-to/navigate-from-classic|Migrate from the classic portal}}
+  </div>
+</section>

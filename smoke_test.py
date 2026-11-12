@@ -78,6 +78,23 @@ with sync_playwright() as p:
     report["checks"]["state_on"] = pg.locator("#sessionStates .state.on > b").inner_text()
     pg.locator("#hosted").screenshot(path=str(SHOTS / "05-hosted.png"))
 
+    # new sections: what's new + privacy
+    pg.locator("#whats-new").scroll_into_view_if_needed()
+    report["checks"]["readiness_rows"] = pg.locator("#whats-new .tbl tbody tr").count()
+    report["checks"]["eyebrow_numbers"] = pg.evaluate(
+        "[...document.querySelectorAll('main .sec')].map(s => { const e = s.querySelector('.sec-head .eyebrow'); return e ? e.textContent.trim().slice(0,2) : '--'; }).join(',')")
+    pg.locator("#privacy").scroll_into_view_if_needed()
+    pg.wait_for_timeout(400)
+    privacy_tabs = pg.locator("#privacy .tablist button")
+    report["checks"]["privacy_tabs"] = privacy_tabs.count()
+    for i in range(privacy_tabs.count()):
+        privacy_tabs.nth(i).click()
+        report["checks"].setdefault("privacy_tab_text", []).append(
+            pg.locator("#privacy .tabpanel:not([hidden])").inner_text()[:40].replace("\n", " "))
+    privacy_tabs.nth(4).click()
+    pg.locator("#privacy").screenshot(path=str(SHOTS / "07-privacy.png"))
+    pg.locator("#whats-new").screenshot(path=str(SHOTS / "08-whatsnew.png"))
+
     # expand all
     pg.click("#expandAll")
 

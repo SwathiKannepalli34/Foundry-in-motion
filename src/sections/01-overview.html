@@ -5,7 +5,7 @@
     <p class="lede">One platform to build agents, choose models, ground them in your knowledge, run them at scale, and prove they are safe, observable and under control. This guide walks the whole path with live visuals and links to the official docs.</p>
     <div class="stats">
       <div class="stat"><b>10,000+</b><span>models in the catalog</span></div>
-      <div class="stat"><b>3</b><span>agent styles: prompt, workflow, hosted</span></div>
+      <div class="stat"><b>2</b><span>core agent styles: prompt and hosted</span></div>
       <div class="stat"><b>1,000+</b><span>connectors in the tool catalog</span></div>
       <div class="stat"><b>4</b><span>guardrail intervention points</span></div>
     </div>
@@ -30,7 +30,7 @@
         <g class="float"><rect x="272" y="104" width="150" height="132" rx="14" fill="url(#hg)" opacity=".92"/>
           <text x="347" y="134" text-anchor="middle" font-size="15" fill="#fff" style="fill:#fff;font-weight:700">Agents</text>
           <text x="347" y="158" text-anchor="middle" font-size="12" style="fill:#fff">Prompt</text>
-          <text x="347" y="178" text-anchor="middle" font-size="12" style="fill:#fff">Workflow</text>
+          <text x="347" y="178" text-anchor="middle" font-size="12" style="fill:#fff">Voice</text>
           <text x="347" y="198" text-anchor="middle" font-size="12" style="fill:#fff">Hosted (your code)</text></g>
         <g>
           <rect class="box" x="448" y="104" width="130" height="56" rx="12"/><text x="513" y="128" text-anchor="middle" font-size="14">Models</text><text class="t-f" x="513" y="146" text-anchor="middle" font-size="11">catalog &amp; deployments</text>
@@ -63,7 +63,7 @@
   </div>
 
   <div class="grid g3 auto">
-    <div class="mini" style="--c:var(--blue)"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div><b>Agents</b><span>Declarative <b>prompt agents</b> (including voice), <b>workflows</b>, and <b>hosted agents</b> that run your own code in a managed runtime.</span></div>
+    <div class="mini" style="--c:var(--blue)"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div><b>Agents</b><span>Declarative <b>prompt agents</b> (including voice), and <b>hosted agents</b> that run your own code in a managed runtime. Autopilots build on hosted agents.</span></div>
     <div class="mini" style="--c:var(--violet)"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg></div><b>Models</b><span>More than 10,000 models from Microsoft, OpenAI, Anthropic, Meta and others, deployed with the billing and residency option you choose.</span></div>
     <div class="mini" style="--c:var(--cyan)"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 6l4 4-9 9H5v-4z"/><path d="M13 7l4 4"/></svg></div><b>Tools &amp; knowledge</b><span>A <b>Toolbox</b> packages tools behind one MCP endpoint; <b>Foundry IQ</b> and <b>memory</b> ground agents in your content and context.</span></div>
     <div class="mini" style="--c:var(--green)"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></div><b>Observability</b><span>Trace and monitor agents and models, with dashboards for tokens, latency, success rate and evaluation scores.</span></div>
@@ -75,7 +75,7 @@
   <p>Most work on Foundry centers on an <b>agent</b>: a model paired with instructions and tools that can reason over a request and take action. The main decision is how much of the runtime you want to control. You can start declarative and move to code later.</p>
   <div class="spectrum">
     <div class="s1"><b>Prompt agent</b><span>Instructions + model + tools, defined in the portal or SDK. Foundry hosts and runs it. Nothing to deploy.</span></div>
-    <div class="s2"><b>Workflow agent <span class="tag prev">Preview</span></b><span>Orchestrates several agents and steps when one task spans more than one agent.</span></div>
+    <div class="s2"><b>Workflow agent <span class="tag prev">Preview</span> <span class="tag prev">Retiring</span></b><span>Visual orchestration of agents and steps. <b>Foundry is retiring workflows on December 1, 2026.</b> Use Microsoft Agent Framework for new orchestration.</span></div>
     <div class="s3"><b>Hosted agent</b><span>Your code and framework (Agent Framework, LangGraph, Semantic Kernel, custom) packaged as a container. Foundry gives it an endpoint, identity, scaling and observability.</span></div>
   </div>
 
